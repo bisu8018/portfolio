@@ -1,8 +1,8 @@
 {
-  "profile": "프로필",
-  "good_people": "싸이좋은 사람들",
-  "today_is": "TODAY IS...",
-  "joy": "즐거움",
-  "cyworld_slogan": "사이좋은 사람을 싸이월드~^_^",
-  "my_friend": "★나의 1촌"
+  "lnb": {
+    "close": "닫기",
+    "minimize": "최소화",
+    "maximize": "최대화",
+    "restore": "이전 크기로"
+  }
 }

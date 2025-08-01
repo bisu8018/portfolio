@@ -18,8 +18,8 @@ export default function NoeulGradient() {
   }, [])
 
   // 그라데이션 opacity 계산 (핑크: 좌상단 가까울수록, 보라: 우하단 가까울수록)
-  const pinkOpacity = 0.18 + (1 - mouse.x) * (1 - mouse.y) * 0.22 // 최대 0.4
-  const purpleOpacity = 0.22 + mouse.x * mouse.y * 0.22 // 최대 0.4
+  const pinkOpacity = (1 - mouse.x) * (1 - mouse.y) * 0.4
+  const purpleOpacity = mouse.x * mouse.y * 0.4
 
   return (
     <>

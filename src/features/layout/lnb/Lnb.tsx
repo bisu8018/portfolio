@@ -36,6 +36,7 @@ export default function Lnb() {
     >
       <aside className="h-full min-h-[100%] pt-15 pb-6 px-5 flex flex-col items-center bg-[rgba(255,255,255,0.18)] [backdrop-filter:blur(16px)_saturate(180%)] relative border-r border-gray-200">
         <LnbButtons />
+
         <div className="w-24 h-24 rounded-full bg-pink-200 mb-4 flex items-center justify-center text-4xl font-bold border-4 border-white shadow-lg">
           <span role="img" aria-label="profile">
             😊
