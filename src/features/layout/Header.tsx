@@ -1,3 +1,7 @@
 export default function Header() {
-  return <header className="bg-gray-800 text-white p-4 relative z-10">My Portfolio</header>
+  return (
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div>&nbsp;</div>
+    </header>
+  )
 }
