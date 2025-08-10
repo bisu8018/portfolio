@@ -11,6 +11,7 @@ export default function useDynamicMaxWidth() {
         setDynamicMaxWidth('1280px')
       }
     }
+    
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)

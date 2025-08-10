@@ -1,8 +1,53 @@
 {
+  "meta": {
+    "main": {
+      "title": "Home - Dean",
+      "description": "✨ This is the portfolio of frontend developer Huiyong Park, who creates projects with the latest trends and sensibility. 🚀"
+    },
+    "about": {
+      "title": "About - Dean",
+      "description": "🙋‍♂️ Introduction, growth story, and development philosophy of Huiyong Park."
+    },
+    "career": {
+      "title": "Career - Dean",
+      "description": "💼 Huiyong Park's career, project experience, and work history."
+    },
+    "contact": {
+      "title": "Contact - Dean",
+      "description": "📬 Contact and SNS information to reach Huiyong Park."
+    },
+    "default": {
+      "title": "Dean Portfolio",
+      "description": "🌏 Dean's portfolio."
+    }
+  },
+  "network": {
+    "unknown": "Network status unknown",
+    "good": "Network is good",
+    "bad": "Network is poor"
+  },
+  "lang": {
+    "korean": "Korean",
+    "english": "English"
+  },
   "lnb": {
     "close": "Close",
     "minimize": "Minimize",
     "maximize": "Maximize",
     "restore": "Restore Down"
+  },
+  "date": {
+    "week": {
+      "0": "Sun",
+      "1": "Mon",
+      "2": "Tue",
+      "3": "Wed",
+      "4": "Thu",
+      "5": "Fri",
+      "6": "Sat"
+    },
+    "am": "AM",
+    "pm": "PM",
+    "format": "{{month}}/{{day}} ({{week}}) {{ampm}} {{hour}}:{{min}}"
   }
 }

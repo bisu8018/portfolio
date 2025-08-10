@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useLnbStore } from '../stores/lnbStore'
+import { useWindowStore } from '../stores/windowStore'
 import { useMobileStore } from '../stores/mobileStore'
 
 /**
@@ -7,16 +7,20 @@ import { useMobileStore } from '../stores/mobileStore'
  */
 export default function useForceMaximizeOnMobile() {
   const isMobile = useMobileStore((s) => s.isMobile)
-  const setMaximized = useLnbStore((s) => s.setMaximized)
+  const setMaximizedState = useWindowStore((s) => s.setMaximizedState)
+  const syncMaximizedFromCookie = useWindowStore((s) => s.syncMaximizedFromCookie)
 
   useEffect(() => {
     function handleResize() {
       if (isMobile) {
-        setMaximized(true)
+        setMaximizedState(true)
+      } else {
+        syncMaximizedFromCookie()
       }
     }
+
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [isMobile, setMaximized])
+  }, [isMobile, setMaximizedState, syncMaximizedFromCookie])
 }

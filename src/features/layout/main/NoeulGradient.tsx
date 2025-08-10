@@ -1,10 +1,22 @@
+/**
+ * NoeulGradient 컴포넌트
+ * 메인 영역의 그라데이션 배경을 렌더링합니다.
+ * @component
+ * @returns {JSX.Element} 그라데이션 배경
+ */
 import { useRef, useEffect, useState } from 'react'
+import { useWindowStore } from '@/stores/windowStore'
 
 export default function NoeulGradient() {
   const mainRef = useRef<HTMLDivElement>(null)
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 })
+  const isMaximized = useWindowStore((s: { isMaximized: boolean }) => s.isMaximized)
 
   useEffect(() => {
+    if (isMaximized) {
+      setMouse({ x: 0.5, y: 0.5 })
+      return
+    }
     const handleMouseMove = (e: MouseEvent) => {
       const main = mainRef.current
       if (!main) return
@@ -15,11 +27,25 @@ export default function NoeulGradient() {
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+  }, [isMaximized])
 
-  // 그라데이션 opacity 계산 (핑크: 좌상단 가까울수록, 보라: 우하단 가까울수록)
-  const pinkOpacity = (1 - mouse.x) * (1 - mouse.y) * 0.4
-  const purpleOpacity = mouse.x * mouse.y * 0.4
+  useEffect(() => {
+    if (isMaximized) return
+    const handleMouseMove = (e: MouseEvent) => {
+      const main = mainRef.current
+      if (!main) return
+      const { width, height, left, top } = main.getBoundingClientRect()
+      const x = Math.min(Math.max((e.clientX - left) / width, 0), 1)
+      const y = Math.min(Math.max((e.clientY - top) / height, 0), 1)
+      setMouse({ x, y })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [isMaximized])
+
+  // 최대화 상태면 opacity 0으로 처리
+  const pinkOpacity = isMaximized ? 0 : (1 - mouse.x) * (1 - mouse.y) * 0.4
+  const purpleOpacity = isMaximized ? 0 : mouse.x * mouse.y * 0.4
 
   return (
     <>

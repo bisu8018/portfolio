@@ -1,4 +1,7 @@
 export const ROUTE_PATHS = {
   ROOT: '/',
-  MINI_HOME_PAGE: '/mini-home',
+  MAIN_PAGE: '/main',
+  ABOUT: '/about',
+  CAREER: '/career',
+  CONTACT: '/contact',
 } as const;

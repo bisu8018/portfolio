@@ -1,3 +1,9 @@
+/**
+ * BgWallpaper 컴포넌트
+ * 배경 이미지를 렌더링합니다.
+ * @component
+ * @returns {JSX.Element} 배경 이미지
+ */
 import { useRef } from 'react'
 
 export default function BgWallpaper() {
@@ -5,7 +11,7 @@ export default function BgWallpaper() {
 
   return (
     <div
-      className="relative w-full h-full overflow-hidden z-[-9999]"
+      className="fixed top-0 left-0 w-screen h-screen overflow-hidden z-[-9999]"
       aria-hidden="true"
       style={{ pointerEvents: 'none' }}
     >
@@ -13,7 +19,7 @@ export default function BgWallpaper() {
         ref={imgRef}
         src="/src/assets/lo_fi_wallpaper.jpg"
         alt="lofi background"
-        className="absolute w-screen h-screen object-cover object-center opacity-85 block"
+        className="w-full h-full object-cover object-center opacity-85 block"
         draggable={false}
       />
     </div>

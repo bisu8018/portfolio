@@ -4,9 +4,10 @@ interface ParallaxTiltOptions {
   max?: number
   speed?: number // ms 단위, transition-duration
   enabled?: boolean
+  global?: boolean // true: window, false: ref.current
 }
 
-function useParallaxTilt({ max = 10, speed = 300, enabled = true }: ParallaxTiltOptions = {}) {
+function useParallaxTilt({ max = 10, speed = 300, enabled = true, global = true }: ParallaxTiltOptions = {}) {
   const ref = useRef<HTMLElement>(null)
   const frame = useRef<number | null>(null)
 
@@ -42,15 +43,32 @@ function useParallaxTilt({ max = 10, speed = 300, enabled = true }: ParallaxTilt
         ref.current.style.transition = `transform ${speed}ms cubic-bezier(0.22, 1, 0.36, 1)`
       }
     }
-    window.addEventListener('mousemove', handle)
-    window.addEventListener('mouseleave', handleLeave)
-    return () => {
-      mounted = false
-      if (frame.current !== null) cancelAnimationFrame(frame.current)
-      window.removeEventListener('mousemove', handle)
-      window.removeEventListener('mouseleave', handleLeave)
+    if (global) {
+      window.addEventListener('mousemove', handle)
+      window.addEventListener('mouseleave', handleLeave)
+      return () => {
+        mounted = false
+        if (frame.current !== null) cancelAnimationFrame(frame.current)
+        window.removeEventListener('mousemove', handle)
+        window.removeEventListener('mouseleave', handleLeave)
+      }
+    } else {
+      const node = ref.current
+      node.addEventListener('mousemove', handle)
+      node.addEventListener('mouseleave', handleLeave)
+      return () => {
+        mounted = false
+        if (frame.current !== null) cancelAnimationFrame(frame.current)
+        node.removeEventListener('mousemove', handle)
+        node.removeEventListener('mouseleave', handleLeave)
+        // global false일 때 화면 벗어나면 초기화
+        if (node) {
+          node.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)'
+          node.style.transition = `transform ${speed}ms cubic-bezier(0.22, 1, 0.36, 1)`
+        }
+      }
     }
-  }, [max, speed, enabled])
+  }, [max, speed, enabled, global])
 
   // enabled가 false로 바뀌면 transform/transition 초기화
   useEffect(() => {
