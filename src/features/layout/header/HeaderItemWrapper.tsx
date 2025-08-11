@@ -1,9 +1,3 @@
-/**
- * HeaderItemWrapper 컴포넌트
- * 헤더 아이템들을 감싸고 클릭 시 배경 효과를 제공합니다.
- * @component
- * @returns {JSX.Element} 헤더 아이템 래퍼
- */
 import React, { useState } from 'react'
 import { useWindowStore } from '@/stores/windowStore'
 import clsx from 'clsx'
@@ -13,6 +7,12 @@ type HeaderItemWrapperProps = {
   className?: string
 }
 
+/**
+ * HeaderItemWrapper 컴포넌트
+ * 헤더 아이템들을 감싸고 클릭 시 배경 효과를 제공합니다.
+ * @component
+ * @returns {JSX.Element} 헤더 아이템 래퍼
+ */
 function HeaderItemChildWrapper({
   child,
   className,
@@ -39,6 +39,11 @@ function HeaderItemChildWrapper({
   )
 }
 
+/** * HeaderItemWrapper 컴포넌트
+ * 헤더 아이템들을 감싸고 클릭 시 배경 효과를 제공합니다.
+ * @component
+ * @returns {JSX.Element} 헤더 아이템 래퍼
+ */
 export default function HeaderItemWrapper({ children, className }: HeaderItemWrapperProps) {
   const isMaximized = useWindowStore((s) => s.isMaximized)
   return (

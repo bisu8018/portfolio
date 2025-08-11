@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 import CWindowToolBtns from '../../commons/CWindowToolBtns'
 import HeaderTime from './HeaderTime'
 import HeaderNetStatus from './HeaderNetStatus'
-import HeaderLangIcon from './HeaderLangIcon'
+import HeaderLang from './HeaderLang'
 import HeaderItemWrapper from './HeaderItemWrapper'
 
 export default function Header() {
@@ -49,7 +49,7 @@ export default function Header() {
       )}
 
       <HeaderItemWrapper>
-        <HeaderLangIcon />
+        <HeaderLang />
         <HeaderNetStatus />
         <HeaderTime />
       </HeaderItemWrapper>
