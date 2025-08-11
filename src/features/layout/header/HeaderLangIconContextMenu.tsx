@@ -18,7 +18,7 @@ export default function HeaderLangIconContextMenu({
 
   return (
     <ContextMenu open={open} anchor={anchorEl} onClose={onClose}>
-      <div className="flex flex-col min-w-[120px]">
+      <div className="flex flex-col min-w-[120px] text-sm">
         <button
           className="text-left flex items-center gap-2 px-2 py-1 hover:bg-blue-400 hover:text-white hover:rounded-sm"
           onClick={() => {
