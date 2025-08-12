@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useContextMenuVisible } from '@/hooks/common/useContextMenuVisible'
 import { useOnClickOutside } from '@/hooks/common/useOnClickOutside'
 import { useAnchorPosition } from '@/hooks/common/useAnchorPosition'
@@ -41,30 +42,34 @@ export default function ContextMenu(props: ContextMenuProps) {
   // anchor 기준 위치 계산
   const style = useAnchorPosition(anchor)
 
-  if (!visible) return null
-
   return (
-    <div
-      ref={ref}
-      style={style}
-      className={[
-        'rounded-md',
-        'bg-[rgba(255,255,255,0.10)]',
-        'backdrop-blur-xl',
-        'border border-white/30',
-        'relative overflow-hidden',
-        'p-1 select-none',
-        'before:absolute before:inset-0 before:rounded-md before:pointer-events-none before:z-10',
-        'before:bg-gradient-to-br before:from-white/30 before:to-white/0',
-        'after:absolute after:inset-0 after:rounded-md after:pointer-events-none after:z-20',
-        'after:animate-glass-sparkle',
-        open ? 'animate-fade-in' : 'animate-fade-out',
-        className || '',
-      ].join(' ')}
-      tabIndex={-1}
-      onMouseDown={(e) => e.stopPropagation()}
-    >
-      {children}
-    </div>
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          ref={ref}
+          style={style}
+          initial={{ opacity: 0, scale: 0.95, y: -8 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: -8 }}
+          transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
+          className={[
+            'rounded-md',
+            'bg-[rgba(255,255,255,0.10)]',
+            'backdrop-blur-xl',
+            'border border-white/30',
+            'relative overflow-hidden',
+            'p-1 select-none',
+            'before:absolute before:inset-0 before:rounded-md before:pointer-events-none before:z-10',
+            'before:bg-gradient-to-br before:from-white/30 before:to-white/0',
+            'after:absolute after:inset-0 after:rounded-md after:pointer-events-none after:z-20',
+            className || '',
+          ].join(' ')}
+          tabIndex={-1}
+          onMouseDown={(e) => e.stopPropagation()}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
