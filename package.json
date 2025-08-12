@@ -3,6 +3,20 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "Dean Huiyong Park's portfolio and resume web app. Built with modern React, Vite, TypeScript, Zustand, TanStack Query, TailwindCSS, and more.",
+  "author": {
+    "name": "박희용",
+    "email": "dean.huiyongPark@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bisu8018/dean-huiyongpark.github.io"
+  },
+  "bugs": {
+    "url": "https://github.com/bisu8018/dean-huiyongpark.github.io/issues"
+  },
+  "homepage": "https://bisu8018.github.io/dean-huiyongpark.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
