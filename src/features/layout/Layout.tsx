@@ -10,9 +10,11 @@ import Main from './main/Main'
 import BgWallpaper from './BgWallpaper'
 import { useEffect } from 'react'
 import { useWindowStore } from '@/stores/windowStore'
+import useDetectMobile from '@/hooks/useDetectMobile'
 
 export default function Layout() {
   const syncMaximizedFromCookie = useWindowStore((s) => s.syncMaximizedFromCookie)
+  const isMobile = useDetectMobile()
 
   useEffect(() => {
     syncMaximizedFromCookie()
@@ -21,9 +23,12 @@ export default function Layout() {
   return (
     <div className="w-screen h-screen relative overflow-hidden">
       <BgWallpaper />
-      <Header />
+
+      {!isMobile && <Header />}
+
       <Main />
-      <Footer />
+
+      {!isMobile && <Footer />}
     </div>
   )
 }

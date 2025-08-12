@@ -2,17 +2,30 @@ import { useEffect } from 'react'
 import { useMobileStore } from '../stores/mobileStore'
 
 /**
- * 가로 768px 미만이면 isMobile을 true로, 아니면 false로 지정하는 훅
+ * 다양한 방법(window size, userAgent, 터치 지원)으로 모바일 환경을 감지하는 훅
+ * @returns {boolean} 모바일 여부
  */
+function isMobileEnv() {
+  if (typeof window === 'undefined') return false
+  const widthCheck = window.innerWidth < 768
+  const ua = navigator.userAgent.toLowerCase()
+  const uaCheck = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(ua)
+  const touchCheck = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  return widthCheck || uaCheck || touchCheck
+}
+
 export default function useDetectMobile() {
   const setIsMobile = useMobileStore((s) => s.setIsMobile)
+  const isMobile = useMobileStore((s) => s.isMobile)
 
   useEffect(() => {
-    function handleResize() {
-      setIsMobile(window.innerWidth < 768)
+    function handleResizeOrDetect() {
+      setIsMobile(isMobileEnv())
     }
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    handleResizeOrDetect()
+    window.addEventListener('resize', handleResizeOrDetect)
+    return () => window.removeEventListener('resize', handleResizeOrDetect)
   }, [setIsMobile])
+
+  return isMobile
 }
