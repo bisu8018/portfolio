@@ -13,11 +13,23 @@ import HeaderTime from './HeaderTime'
 import HeaderNetStatus from './HeaderNetStatus'
 import HeaderLang from './HeaderLang'
 import HeaderItemWrapper from './HeaderItemWrapper'
+import { useContextMenuStore } from '@/stores/contextMenuStore'
 
 export default function Header() {
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const mouseTopShow = useShowOnMouseTop(32, true)
-  const show = isMaximized ? mouseTopShow : true
+  const contextMenuVisible = useContextMenuStore((s) => s.visible)
+
+  let show: boolean
+  if (isMaximized) {
+    if (contextMenuVisible) {
+      show = true
+    } else {
+      show = mouseTopShow
+    }
+  } else {
+    show = true
+  }
 
   const [transitionEnabled, setTransitionEnabled] = useState(!isMaximized)
   useEffect(() => {

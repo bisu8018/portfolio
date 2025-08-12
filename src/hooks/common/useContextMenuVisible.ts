@@ -1,3 +1,4 @@
+import { useContextMenuStore } from '@/stores/contextMenuStore'
 import { useEffect, useState } from 'react'
 /**
  * ContextMenu 등에서 fade-out 애니메이션 후 언마운트 처리를 위한 visible 상태 관리 훅
@@ -7,17 +8,24 @@ import { useEffect, useState } from 'react'
  */
 export function useContextMenuVisible(open: boolean, duration: number = 180) {
   const [visible, setVisible] = useState(open)
+  const setVisibleStore = useContextMenuStore((s) => s.setVisible)
 
   useEffect(() => {
-    if (open) setVisible(true)
-  }, [open])
+    if (open) {
+      setVisible(true)
+      setVisibleStore(true)
+    }
+  }, [open, setVisibleStore])
 
   useEffect(() => {
     if (!open && visible) {
-      const timeout = setTimeout(() => setVisible(false), duration)
+      const timeout = setTimeout(() => {
+        setVisible(false)
+        setVisibleStore(false)
+      }, duration)
       return () => clearTimeout(timeout)
     }
-  }, [open, visible, duration])
+  }, [open, visible, duration, setVisibleStore])
 
   return visible
 }
