@@ -22,7 +22,7 @@ interface ContextMenuProps {
  */
 export default function ContextMenu(props: ContextMenuProps) {
   const { open, anchor, onClose, children, className } = props
-  const visible = useContextMenuVisible(open, 180)
+  const visible = useContextMenuVisible(open, 0)
   const ref = useRef<HTMLDivElement>(null)
 
   // 바깥 클릭 시 닫기 (anchor, wrapper 내부 클릭은 무시)
