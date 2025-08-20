@@ -15,11 +15,11 @@ export default function App() {
         <MetaTag />
         <Routes>
           <Route path={ROUTE_PATHS.ROOT} element={<Layout />}>
-            <Route index element={<Navigate to={ROUTE_PATHS.MAIN_PAGE} replace />} />
-            <Route path={ROUTE_PATHS.MAIN_PAGE} element={<HomePage />} />
-            <Route path={ROUTE_PATHS.ABOUT} element={<AboutPage />} />
-            <Route path={ROUTE_PATHS.CAREER} element={<CareerPage />} />
-            <Route path={ROUTE_PATHS.CONTACT} element={<ContactPage />} />
+            <Route index element={<Navigate to={ROUTE_PATHS.PORTFOLIO.MAIN_PAGE} replace />} />
+            <Route path={ROUTE_PATHS.PORTFOLIO.MAIN_PAGE} element={<HomePage />} />
+            <Route path={ROUTE_PATHS.PORTFOLIO.ABOUT} element={<AboutPage />} />
+            <Route path={ROUTE_PATHS.PORTFOLIO.CAREER} element={<CareerPage />} />
+            <Route path={ROUTE_PATHS.PORTFOLIO.CONTACT} element={<ContactPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

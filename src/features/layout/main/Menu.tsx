@@ -64,7 +64,7 @@ export default function Menu() {
                 className="bg-transparent p-0 m-0 border-0 text-inherit text-left cursor-pointer"
                 onClick={() => {
                   setOpen(false)
-                  navigate(ROUTE_PATHS.MAIN_PAGE)
+                  navigate(ROUTE_PATHS.PORTFOLIO.MAIN_PAGE)
                 }}
               >
                 {t('lnb.home', '홈')}
@@ -73,7 +73,7 @@ export default function Menu() {
                 className="bg-transparent p-0 m-0 border-0 text-inherit text-left cursor-pointer"
                 onClick={() => {
                   setOpen(false)
-                  navigate(ROUTE_PATHS.ABOUT)
+                  navigate(ROUTE_PATHS.PORTFOLIO.ABOUT)
                 }}
               >
                 {t('lnb.about', '소개')}
@@ -82,7 +82,7 @@ export default function Menu() {
                 className="bg-transparent p-0 m-0 border-0 text-inherit text-left cursor-pointer"
                 onClick={() => {
                   setOpen(false)
-                  navigate(ROUTE_PATHS.CAREER)
+                  navigate(ROUTE_PATHS.PORTFOLIO.CAREER)
                 }}
               >
                 {t('lnb.career', '경력')}
@@ -91,7 +91,7 @@ export default function Menu() {
                 className="bg-transparent p-0 m-0 border-0 text-inherit text-left cursor-pointer"
                 onClick={() => {
                   setOpen(false)
-                  navigate(ROUTE_PATHS.CONTACT)
+                  navigate(ROUTE_PATHS.PORTFOLIO.CONTACT)
                 }}
               >
                 {t('lnb.contact', '연락처')}

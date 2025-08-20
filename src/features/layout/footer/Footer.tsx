@@ -2,6 +2,7 @@ import GlassLayeredBox from '@/features/commons/GlassLayeredBox'
 import { useWindowStore } from '@/stores/windowStore'
 import { useShowOnMouseBottom } from '@/hooks/useShowOnMouseBottom'
 import { AnimatePresence, motion } from 'framer-motion'
+import PortfolioIcon from './footerIcons/PortfolioIcon'
 
 /**
  * Footer 컴포넌트
@@ -25,15 +26,12 @@ export default function Footer() {
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 320, damping: 32 }}
           className="fixed left-1/2 -translate-x-1/2 z-40"
-          style={{ bottom: 16, pointerEvents: 'none' }}
+          style={{ bottom: 8, pointerEvents: 'none' }}
         >
-          <GlassLayeredBox width={680} height={70}>
-            <span
-              className="text-gray-800 text-base font-medium select-none"
-              style={{ pointerEvents: 'auto' }}
-            >
-              Footer
-            </span>
+          <GlassLayeredBox width={680} height={78}>
+            <div className="w-full p-3">
+              <PortfolioIcon />
+            </div>
           </GlassLayeredBox>
         </motion.footer>
       )}

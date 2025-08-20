@@ -5,7 +5,7 @@
  * @returns {JSX.Element} 전체 레이아웃 구조
  */
 import Header from './header/Header'
-import Footer from './Footer'
+import Footer from './footer/Footer'
 import Main from './main/Main'
 import BgWallpaper from './BgWallpaper'
 import { useEffect } from 'react'

@@ -48,8 +48,8 @@ export default function Lnb() {
         <LnbMenu.Root className="mt-4">
           <LnbMenu.Item
             icon={<span className="">🏠</span>}
-            onClick={() => navigate(ROUTE_PATHS.MAIN_PAGE)}
-            selected={currentPath === ROUTE_PATHS.MAIN_PAGE}
+            onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.MAIN_PAGE)}
+            selected={currentPath === ROUTE_PATHS.PORTFOLIO.MAIN_PAGE}
           >
             {t('lnb.home', '홈')}
           </LnbMenu.Item>
@@ -58,22 +58,22 @@ export default function Lnb() {
         <LnbMenu.Root className="mt-2">
           <LnbMenu.Item
             icon={<span className="">👤</span>}
-            onClick={() => navigate(ROUTE_PATHS.ABOUT)}
-            selected={currentPath === ROUTE_PATHS.ABOUT}
+            onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.ABOUT)}
+            selected={currentPath === ROUTE_PATHS.PORTFOLIO.ABOUT}
           >
             {t('lnb.about', '소개')}
           </LnbMenu.Item>
           <LnbMenu.Item
             icon={<span className="">💼</span>}
-            onClick={() => navigate(ROUTE_PATHS.CAREER)}
-            selected={currentPath === ROUTE_PATHS.CAREER}
+            onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.CAREER)}
+            selected={currentPath === ROUTE_PATHS.PORTFOLIO.CAREER}
           >
             {t('lnb.career', '경력')}
           </LnbMenu.Item>
           <LnbMenu.Item
             icon={<span className="">✉️</span>}
-            onClick={() => navigate(ROUTE_PATHS.CONTACT)}
-            selected={currentPath === ROUTE_PATHS.CONTACT}
+            onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.CONTACT)}
+            selected={currentPath === ROUTE_PATHS.PORTFOLIO.CONTACT}
           >
             {t('lnb.contact', '연락처')}
           </LnbMenu.Item>
