@@ -12,9 +12,12 @@ import { useEffect } from 'react'
 import { useWindowStore } from '@/stores/windowStore'
 import useDetectMobile from '@/hooks/useDetectMobile'
 
+import { useLocation } from 'react-router-dom'
+
 export default function Layout() {
   const syncMaximizedFromCookie = useWindowStore((s) => s.syncMaximizedFromCookie)
   const isMobile = useDetectMobile()
+  const location = useLocation()
 
   useEffect(() => {
     syncMaximizedFromCookie()
@@ -26,7 +29,7 @@ export default function Layout() {
 
       {!isMobile && <Header />}
 
-      <Main />
+      {location.pathname !== '/' && <Main />}
 
       {!isMobile && <Footer />}
     </div>

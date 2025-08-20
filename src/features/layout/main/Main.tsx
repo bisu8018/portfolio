@@ -21,12 +21,15 @@ export default function Main() {
   const isMobile = useDetectMobile()
   const dynamicMaxWidth = useMainDynamicMaxWidth()
   const isMaximized = useWindowStore((s) => s.isMaximized)
+  const isMinimized = useWindowStore((s) => s.isMinimized)
   const { ref } = useParallaxTilt({
     max: 2,
     speed: 200,
     enabled: !isMaximized,
   })
   const blur = useDynamicBlur(5, 14)
+
+  if (isMinimized) return <></>
 
   return (
     <main ref={ref} className="absolute inset-0 flex items-center justify-center">

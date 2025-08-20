@@ -10,6 +10,7 @@ import lnbMaximize from '@/assets/lnb-maximize.svg'
 import lnbRestoreDown from '@/assets/lnb-restore_down.svg'
 import { useWindowStore } from '@/stores/windowStore'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import clsx from 'clsx'
 
 type CWindowToolBtnsProps = React.HTMLAttributes<HTMLDivElement>
@@ -20,6 +21,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
   const setMinimized = useWindowStore((s) => s.setMinimized)
   const setMaximized = useWindowStore((s) => s.setMaximized)
   const isMaximized = useWindowStore((s) => s.isMaximized)
+  const navigate = useNavigate()
 
   return (
     <div className={clsx('absolute flex gap-2 group', className)} {...props}>
@@ -27,7 +29,10 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
       <span
         className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e] flex items-center justify-center"
         title={t('lnb.close')}
-        onClick={() => setClosed(true)}
+        onClick={() => {
+          setClosed(true)
+          navigate('/')
+        }}
       >
         <img
           src={lnbClose}
@@ -35,6 +40,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
           className="w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity"
         />
       </span>
+
       {/* Minimize */}
       <span
         className={
@@ -56,6 +62,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
           }
         />
       </span>
+
       {/* Maximize / Restore */}
       <span
         className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#13a10e] flex items-center justify-center"

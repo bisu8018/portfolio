@@ -18,7 +18,11 @@ export default function PortfolioIcon({
   const isPortfolio = portfolioPaths.some((path) => location.pathname === path)
 
   return (
-    <FooterIconWrapper selected={isPortfolio} tooltipText={t('footer.portfolio', '포트폴리오')}>
+    <FooterIconWrapper
+      selected={isPortfolio}
+      tooltipText={t('footer.portfolio', '포트폴리오')}
+      routePath={ROUTE_PATHS.PORTFOLIO.MAIN_PAGE}
+    >
       <span
         role="img"
         aria-label="portfolio"

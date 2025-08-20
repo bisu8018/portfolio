@@ -1,10 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useWindowStore } from '@/stores/windowStore'
 
 interface FooterIconWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   bgColor?: string // tailwind 색상 클래스 또는 hex/rgb 등
   selected?: boolean
   children: React.ReactNode
   tooltipText?: string
+  routePath?: string
 }
 
 /**
@@ -16,13 +19,18 @@ export default function FooterIconWrapper({
   selected = true,
   tooltipText,
   children,
+  routePath,
   ...props
 }: FooterIconWrapperProps) {
-  return (
-    <div
-      className={`group relative inline-flex items-center justify-center rounded-xl p-1 size-13 cursor-pointer ${bgColor} ${className}`}
-      {...props}
-    >
+  const navigate = useNavigate()
+  const setMinimized = useWindowStore((s) => s.setMinimized)
+  const handleClick = () => {
+    if (!routePath) return
+    setMinimized(false)
+    navigate(routePath)
+  }
+  const content = (
+    <>
       {tooltipText && (
         <span
           className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-12 z-20 whitespace-nowrap px-4 py-1 text-xs rounded-md text-gray-900 border border-white/30 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
@@ -49,6 +57,31 @@ export default function FooterIconWrapper({
       {selected && (
         <span className="absolute left-1/2 -translate-x-1/2 -bottom-2.5 w-1.5 h-1.5 rounded-full bg-white/50 shadow" />
       )}
+    </>
+  )
+
+  if (routePath) {
+    return (
+      <div
+        role="button"
+        tabIndex={0}
+        className={`group relative inline-flex items-center justify-center rounded-xl p-1 size-13 cursor-pointer ${bgColor} ${className}`}
+        onClick={handleClick}
+        onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+          if (e.key === 'Enter' || e.key === ' ') handleClick()
+        }}
+        {...props}
+      >
+        {content}
+      </div>
+    )
+  }
+  return (
+    <div
+      className={`group relative inline-flex items-center justify-center rounded-xl p-1 size-13 cursor-pointer ${bgColor} ${className}`}
+      {...props}
+    >
+      {content}
     </div>
   )
 }
