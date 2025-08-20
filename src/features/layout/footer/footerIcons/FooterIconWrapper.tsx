@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useWindowStore } from '@/stores/windowStore'
 
 interface FooterIconWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -24,10 +24,20 @@ export default function FooterIconWrapper({
 }: FooterIconWrapperProps) {
   const navigate = useNavigate()
   const setMinimized = useWindowStore((s) => s.setMinimized)
+  const location = useLocation()
   const handleClick = () => {
     if (!routePath) return
     setMinimized(false)
-    navigate(routePath)
+
+    const getFirstDepth = (path: string) => {
+      const seg = path.split('/').filter(Boolean)
+      return seg.length > 0 ? seg[0] : ''
+    }
+    const currentFirst = getFirstDepth(location.pathname)
+    const targetFirst = getFirstDepth(routePath)
+    if (currentFirst !== targetFirst) {
+      navigate(routePath)
+    }
   }
   const content = (
     <>

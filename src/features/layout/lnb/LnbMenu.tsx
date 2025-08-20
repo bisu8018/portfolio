@@ -72,13 +72,7 @@ function Item({
       )}
       onClick={onClick}
     >
-      <div
-        className={clsx(
-          'py-2',
-          !isLast &&
-            (selected ? 'border-b border-gray-500/50 w-full' : 'border-b border-gray-300 w-full'),
-        )}
-      >
+      <div className={clsx('py-2', !isLast && 'border-b border-gray-300 w-full')}>
         <span className="mr-4 text-md">{icon}</span>
         <span className="flex-1 text-sm font-medium">{children}</span>
         <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xl font-light pointer-events-none">
