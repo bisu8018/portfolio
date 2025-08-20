@@ -66,9 +66,9 @@ function Item({
   return (
     <div
       className={clsx(
-        'flex items-center cursor-default px-4 relative',
+        'flex items-center px-4 relative cursor-pointer',
         radiusClass,
-        selected ? 'bg-blue-400' : 'bg-gray-100/50',
+        selected ? 'bg-gray-500/50' : 'bg-gray-100/50 hover:bg-gray-300/50',
       )}
       onClick={onClick}
     >
@@ -76,7 +76,7 @@ function Item({
         className={clsx(
           'py-2',
           !isLast &&
-            (selected ? 'border-b border-blue-400 w-full' : 'border-b border-gray-300 w-full'),
+            (selected ? 'border-b border-gray-500/50 w-full' : 'border-b border-gray-300 w-full'),
         )}
       >
         <span className={clsx('mr-4 text-md', selected && 'text-white')}>{icon}</span>

@@ -20,7 +20,7 @@ export default function HeaderLangIconContextMenu({
     <ContextMenu open={open} anchor={anchorEl} onClose={onClose}>
       <div className="flex flex-col min-w-[120px] text-sm">
         <button
-          className="text-left flex items-center gap-2 px-3 py-2 hover:bg-white/40 hover:rounded-md"
+          className="text-left flex items-center gap-2 px-3 py-2 hover:bg-white/40 hover:rounded-md cursor-pointer"
           onClick={() => {
             i18n.changeLanguage('ko')
             onClose()
@@ -31,7 +31,7 @@ export default function HeaderLangIconContextMenu({
         </button>
 
         <button
-          className="text-left flex items-center gap-2 px-3 py-2 hover:bg-white/40 hover:rounded-md"
+          className="text-left flex items-center gap-2 px-3 py-2 hover:bg-white/40 hover:rounded-md cursor-pointer"
           onClick={() => {
             i18n.changeLanguage('en')
             onClose()

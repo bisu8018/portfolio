@@ -16,7 +16,12 @@ type SignalLevel = 0 | 1 | 2 | 3 | 4
 
 type SignalColor = '#fff' | '#d1d5db' | '#1a1a1a'
 
-type HeaderNetStatusProps = React.HTMLAttributes<HTMLSpanElement>
+type HeaderNetStatusProps = React.HTMLAttributes<HTMLSpanElement> & {
+  menuOpen?: boolean
+  setMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>
+  anchorEl?: HTMLElement | null
+  setAnchorEl?: React.Dispatch<React.SetStateAction<HTMLElement | null>>
+}
 
 function getSignalLevel(speed: number | null): SignalLevel {
   if (speed === null) return 0
@@ -32,12 +37,23 @@ function getSignalColor(speed: number | null, isMaximized: boolean): SignalColor
   return '#d1d5db' // 회색(느림/끊김)
 }
 
-const HeaderNetStatus: React.FC<HeaderNetStatusProps> = ({ className, ...props }) => {
+const HeaderNetStatus: React.FC<HeaderNetStatusProps> = ({
+  className,
+  menuOpen: menuOpenProp,
+  setMenuOpen: setMenuOpenProp,
+  anchorEl: anchorElProp,
+  setAnchorEl: setAnchorElProp,
+  ...props
+}) => {
   const { speed } = useInternetSpeed()
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const { t } = useTranslation()
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
+  const [internalMenuOpen, internalSetMenuOpen] = useState(false)
+  const [internalAnchorEl, internalSetAnchorEl] = useState<HTMLElement | null>(null)
+  const menuOpen = menuOpenProp !== undefined ? menuOpenProp : internalMenuOpen
+  const setMenuOpen = setMenuOpenProp !== undefined ? setMenuOpenProp : internalSetMenuOpen
+  const anchorEl = anchorElProp !== undefined ? anchorElProp : internalAnchorEl
+  const setAnchorEl = setAnchorElProp !== undefined ? setAnchorElProp : internalSetAnchorEl
   const level = getSignalLevel(speed)
   const color = getSignalColor(speed, isMaximized)
   let statusLabel = ''
@@ -48,7 +64,7 @@ const HeaderNetStatus: React.FC<HeaderNetStatusProps> = ({ className, ...props }
   return (
     <>
       <span
-        className={clsx('inline-flex items-center select-none', className)}
+        className={clsx('inline-flex items-center select-none py-0.5', className)}
         role="img"
         aria-label={statusLabel}
         title={statusLabel}

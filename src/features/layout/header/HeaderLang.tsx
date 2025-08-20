@@ -10,17 +10,28 @@ import HeaderLangIconContextMenu from './HeaderLangIconContextMenu'
  * @component
  * @returns {JSX.Element} 언어 아이콘
  */
-export default function HeaderLang({ ...props }: React.HTMLAttributes<HTMLSpanElement>) {
+
+type HeaderLangProps = React.HTMLAttributes<HTMLSpanElement> & {
+  menuOpen?: boolean
+  setMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function HeaderLang({
+  menuOpen: menuOpenProp,
+  setMenuOpen: setMenuOpenProp,
+  ...props
+}: HeaderLangProps) {
   const { i18n } = useTranslation()
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const lang = i18n.language.split('-')[0]
-
-  const [menuOpen, setMenuOpen] = useState(false)
   const ref = useRef<HTMLSpanElement>(null)
+  const [internalMenuOpen, internalSetMenuOpen] = useState(false)
+  const menuOpen = menuOpenProp !== undefined ? menuOpenProp : internalMenuOpen
+  const setMenuOpen = setMenuOpenProp !== undefined ? setMenuOpenProp : internalSetMenuOpen
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault()
-    setMenuOpen((prev) => !prev)
+    setMenuOpen((prev: boolean) => !prev)
   }
 
   return (
