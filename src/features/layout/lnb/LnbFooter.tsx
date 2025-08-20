@@ -4,6 +4,13 @@
  * @component
  * @returns {JSX.Element} 푸터 영역
  */
+import { useTranslation } from 'react-i18next'
+
 export default function LnbFooter() {
-  return <footer className="w-full text-xs text-center mt-auto">© 2025 Dean</footer>
+  const { t } = useTranslation()
+  return (
+    <footer className="w-full text-xs text-center mt-auto text-gray-800">
+      {t('footer.copyright', 'Copyright © 2025 Huiyong Park Inc. 모든 권리 보유.')}
+    </footer>
+  )
 }

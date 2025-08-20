@@ -34,7 +34,21 @@
     "close": "닫기",
     "minimize": "최소화",
     "maximize": "최대화",
-    "restore": "이전 크기로"
+    "restore": "이전 크기로",
+    "home": "홈",
+    "about": "소개",
+    "career": "경력",
+    "contact": "연락처"
+  },
+  "profile": {
+    "name": "박희용"
+  },
+  "menu": {
+    "open": "메뉴 열기",
+    "close": "메뉴 닫기"
+  },
+  "footer": {
+    "copyright": "Copyright © 2025 Huiyong Park"
   },
   "date": {
     "week": {

@@ -1,3 +1,3 @@
 export default function HomePage() {
-  return <div className="p-8">tet</div>
+  return <div className="">tet</div>
 }

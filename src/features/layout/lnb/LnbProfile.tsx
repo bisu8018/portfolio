@@ -4,9 +4,12 @@
  * @component
  * @returns {JSX.Element} 프로필 영역
  */
+
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 
 export default function LnbProfile({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  const { t } = useTranslation()
   return (
     <>
       <div
@@ -23,8 +26,9 @@ export default function LnbProfile({ className, ...props }: React.HTMLAttributes
           😊
         </span>
       </div>
-      <div className="text-md font-bold">박희용</div>
+      <div className="text-md font-bold">{t('profile.name', '박희용')}</div>
       <div className="text-sm mb-2">dean.huiyongPark@gmail.com</div>
     </>
   )
+  //
 }

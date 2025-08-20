@@ -48,7 +48,7 @@ const HeaderNetStatus: React.FC<HeaderNetStatusProps> = ({ className, ...props }
   return (
     <>
       <span
-        className={clsx('inline-flex items-center select-none cursor-pointer', className)}
+        className={clsx('inline-flex items-center select-none', className)}
         role="img"
         aria-label={statusLabel}
         title={statusLabel}

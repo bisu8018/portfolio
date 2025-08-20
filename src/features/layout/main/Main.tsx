@@ -14,10 +14,11 @@ import { useWindowStore } from '@/stores/windowStore'
 import useForceMaximizeOnMobile from '@/hooks/useForceMaximizeOnMobile'
 import useDetectMobile from '@/hooks/useDetectMobile'
 import useMainDynamicMaxWidth from '@/hooks/main/useMainDynamicMaxWidth'
+import Menu from './Menu'
 
 export default function Main() {
   useForceMaximizeOnMobile()
-  useDetectMobile()
+  const isMobile = useDetectMobile()
   const dynamicMaxWidth = useMainDynamicMaxWidth()
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const { ref } = useParallaxTilt({
@@ -44,8 +45,11 @@ export default function Main() {
         }}
       >
         <NoeulGradient />
-        <Lnb />
-        <Outlet />
+        {isMobile ? <Menu /> : <Lnb />}
+
+        <div className="p-10">
+          <Outlet />
+        </div>
       </div>
     </main>
   )

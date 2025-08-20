@@ -34,7 +34,21 @@
     "close": "Close",
     "minimize": "Minimize",
     "maximize": "Maximize",
-    "restore": "Restore Down"
+    "restore": "Restore Down",
+    "home": "Home",
+    "about": "About",
+    "career": "Career",
+    "contact": "Contact"
+  },
+  "profile": {
+    "name": "Huiyong Park"
+  },
+  "menu": {
+    "open": "Open menu",
+    "close": "Close menu"
+  },
+  "footer": {
+    "copyright": "Copyright © 2025 Huiyong Park"
   },
   "date": {
     "week": {

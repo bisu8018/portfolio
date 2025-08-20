@@ -11,14 +11,17 @@ import CWindowToolBtns from '../../commons/CWindowToolBtns'
 import { useWindowStore } from '@/stores/windowStore'
 import LnbProfile from './LnbProfile'
 import LnbMenu from './LnbMenu'
+
 import { useNavigate } from 'react-router-dom'
 import { ROUTE_PATHS } from '@/constants/routePaths'
 import LnbFooter from './LnbFooter'
+import { useTranslation } from 'react-i18next'
 
 export default function Lnb() {
   const navigate = useNavigate()
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const [maxWidth] = useLnbDynamicMaxWidth(466)
+  const { t } = useTranslation()
 
   const currentPath = window.location.pathname
 
@@ -48,7 +51,7 @@ export default function Lnb() {
             onClick={() => navigate(ROUTE_PATHS.MAIN_PAGE)}
             selected={currentPath === ROUTE_PATHS.MAIN_PAGE}
           >
-            홈
+            {t('lnb.home', '홈')}
           </LnbMenu.Item>
         </LnbMenu.Root>
 
@@ -58,21 +61,21 @@ export default function Lnb() {
             onClick={() => navigate(ROUTE_PATHS.ABOUT)}
             selected={currentPath === ROUTE_PATHS.ABOUT}
           >
-            소개
+            {t('lnb.about', '소개')}
           </LnbMenu.Item>
           <LnbMenu.Item
             icon={<span className="">💼</span>}
             onClick={() => navigate(ROUTE_PATHS.CAREER)}
             selected={currentPath === ROUTE_PATHS.CAREER}
           >
-            경력
+            {t('lnb.career', '경력')}
           </LnbMenu.Item>
           <LnbMenu.Item
             icon={<span className="">✉️</span>}
             onClick={() => navigate(ROUTE_PATHS.CONTACT)}
             selected={currentPath === ROUTE_PATHS.CONTACT}
           >
-            연락처
+            {t('lnb.contact', '연락처')}
           </LnbMenu.Item>
         </LnbMenu.Root>
 

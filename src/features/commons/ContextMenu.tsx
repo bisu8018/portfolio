@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useContextMenuVisible } from '@/hooks/common/useContextMenuVisible'
 import { useOnClickOutside } from '@/hooks/common/useOnClickOutside'
 import { useAnchorPosition } from '@/hooks/common/useAnchorPosition'
+import GlassLayeredBox from './GlassLayeredBox'
+import clsx from 'clsx'
 
 interface ContextMenuProps {
   open: boolean
@@ -47,27 +49,17 @@ export default function ContextMenu(props: ContextMenuProps) {
       {visible && (
         <motion.div
           ref={ref}
-          style={style}
           initial={{ opacity: 0, scale: 0.95, y: -8 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -8 }}
           transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
-          className={[
-            'rounded-md',
-            'bg-[rgba(255,255,255,0.10)]',
-            'backdrop-blur-xl',
-            'border border-white/30',
-            'relative overflow-hidden',
-            'p-1 select-none',
-            'before:absolute before:inset-0 before:rounded-md before:pointer-events-none before:z-10',
-            'before:bg-gradient-to-br before:from-white/30 before:to-white/0',
-            'after:absolute after:inset-0 after:rounded-md after:pointer-events-none after:z-20',
-            className || '',
-          ].join(' ')}
           tabIndex={-1}
           onMouseDown={(e) => e.stopPropagation()}
+          style={{ ...style, background: 'none', boxShadow: 'none' }}
         >
-          {children}
+          <GlassLayeredBox radius={10} className={clsx('pointer-events-auto p-2', className)}>
+            {children}
+          </GlassLayeredBox>
         </motion.div>
       )}
     </AnimatePresence>
