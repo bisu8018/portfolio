@@ -27,7 +27,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
     <div className={clsx('absolute flex gap-2 group', className)} {...props}>
       {/* Close */}
       <span
-        className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e] flex items-center justify-center"
+        className="cursor-pointer w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e] flex items-center justify-center"
         title={t('lnb.close')}
         onClick={() => {
           setClosed(true)
@@ -46,7 +46,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
         className={
           isMaximized
             ? 'w-3 h-3 rounded-full bg-gray-300 border border-gray-400 flex items-center justify-center'
-            : 'w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123] flex items-center justify-center'
+            : 'cursor-pointer w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123] flex items-center justify-center'
         }
         title={t('lnb.minimize')}
         onClick={isMaximized ? undefined : () => setMinimized(true)}
@@ -65,7 +65,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
 
       {/* Maximize / Restore */}
       <span
-        className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#13a10e] flex items-center justify-center"
+        className="cursor-pointer w-3 h-3 rounded-full bg-[#27c93f] border border-[#13a10e] flex items-center justify-center"
         title={isMaximized ? t('lnb.restore') : t('lnb.maximize')}
         onClick={() => setMaximized((v) => !v)}
       >
