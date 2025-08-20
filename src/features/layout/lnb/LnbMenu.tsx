@@ -68,7 +68,7 @@ function Item({
       className={clsx(
         'flex items-center px-4 relative cursor-pointer',
         radiusClass,
-        selected ? 'bg-gray-500/50' : 'bg-gray-100/50 hover:bg-gray-300/50',
+        selected ? 'bg-white' : 'bg-white/50 hover:bg-white/70',
       )}
       onClick={onClick}
     >
@@ -79,16 +79,9 @@ function Item({
             (selected ? 'border-b border-gray-500/50 w-full' : 'border-b border-gray-300 w-full'),
         )}
       >
-        <span className={clsx('mr-4 text-md', selected && 'text-white')}>{icon}</span>
-        <span className={clsx('flex-1 text-sm font-medium', selected && 'text-white')}>
-          {children}
-        </span>
-        <span
-          className={clsx(
-            'absolute right-4 top-1/2 -translate-y-1/2 text-xl font-light pointer-events-none',
-            selected ? 'text-white' : 'text-gray-400',
-          )}
-        >
+        <span className="mr-4 text-md">{icon}</span>
+        <span className="flex-1 text-sm font-medium">{children}</span>
+        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xl font-light pointer-events-none">
           &#8250;
         </span>
       </div>

@@ -1,9 +1,9 @@
 export const ROUTE_PATHS = {
   ROOT: '/',
   PORTFOLIO: {
-    MAIN_PAGE: '/main',
-    ABOUT: '/about',
-    CAREER: '/career',
-    CONTACT: '/contact',
+    MAIN_PAGE: '/portfolio/main',
+    ABOUT: '/portfolio/about',
+    CAREER: '/portfolio/career',
+    CONTACT: '/portfolio/contact',
   },
 } as const;

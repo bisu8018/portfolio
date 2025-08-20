@@ -22,7 +22,7 @@ export default function PortfolioIcon({
       <span
         role="img"
         aria-label="portfolio"
-        className={`text-4xl transition-colors hover:opacity-80 cursor-pointer ${className}`}
+        className={`text-4xl transition-colors hover:opacity-80 ${className}`}
         {...props}
       >
         🧑‍💻
