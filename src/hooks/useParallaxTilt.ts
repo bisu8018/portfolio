@@ -1,23 +1,30 @@
 import { useRef, useEffect } from 'react'
+import { useMobileStore } from '@/stores/mobileStore'
+import { useParallaxControlStore } from '@/stores/parallaxControlStore'
 
 interface ParallaxTiltOptions {
   max?: number
-  speed?: number // ms 단위, transition-duration
+  speed?: number 
   enabled?: boolean
-  global?: boolean // true: window, false: ref.current
+  global?: boolean 
 }
 
-function useParallaxTilt({ max = 10, speed = 300, enabled = true, global = true }: ParallaxTiltOptions = {}) {
+function useParallaxTilt({ max = 10, speed = 300, enabled, global = true }: ParallaxTiltOptions = {}) {
+  const isMobile = useMobileStore((s) => s.isMobile)
   const ref = useRef<HTMLElement>(null)
   const frame = useRef<number | null>(null)
+  const controlEnabled = useParallaxControlStore((s) => s.enabled)
+  const isEnabled = controlEnabled ? enabled : false
 
   // clamp 함수
   const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v))
 
   useEffect(() => {
-    if (!enabled) return
+    if (!isEnabled) return
     if (!ref.current) return
+
     let mounted = true
+
     const handle = (e: MouseEvent) => {
       if (!mounted || !ref.current) return
       if (frame.current !== null) cancelAnimationFrame(frame.current)
@@ -54,6 +61,7 @@ function useParallaxTilt({ max = 10, speed = 300, enabled = true, global = true 
       }
     } else {
       const node = ref.current
+      if (!node) return
       node.addEventListener('mousemove', handle)
       node.addEventListener('mouseleave', handleLeave)
       return () => {
@@ -68,16 +76,17 @@ function useParallaxTilt({ max = 10, speed = 300, enabled = true, global = true 
         }
       }
     }
-  }, [max, speed, enabled, global])
+  }, [max, speed, isEnabled, global, isMobile])
 
-  // enabled가 false로 바뀌면 transform/transition 초기화
+  // enabled가 false로 바뀌거나 모바일이면 transform/transition 초기화
   useEffect(() => {
-    if (enabled) return
+    if (isEnabled && !isMobile) return
+
     if (ref.current) {
       ref.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)'
       ref.current.style.transition = `transform ${speed}ms cubic-bezier(0.22, 1, 0.36, 1)`
     }
-  }, [enabled, speed])
+  }, [isEnabled, speed, isMobile])
 
   return { ref }
 }

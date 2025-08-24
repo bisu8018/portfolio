@@ -51,6 +51,10 @@
     "portfolio": "Portfolio",
     "copyright": "Copyright © 2025 Huiyong Park"
   },
+  "rnb": {
+    "parallaxOn": "Enable Parallax Effect",
+    "parallaxOff": "Disable Parallax Effect"
+  },
   "date": {
     "week": {
       "0": "Sun",

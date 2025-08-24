@@ -51,6 +51,10 @@
     "portfolio": "포트폴리오",
     "copyright": "Copyright © 2025 Huiyong Park"
   },
+  "rnb": {
+    "parallaxOn": "패럴랙스 효과 켜기",
+    "parallaxOff": "패럴랙스 효과 끄기"
+  },
   "date": {
     "week": {
       "0": "일",

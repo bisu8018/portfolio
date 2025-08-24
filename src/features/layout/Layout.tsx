@@ -13,6 +13,7 @@ import { useWindowStore } from '@/stores/windowStore'
 import useDetectMobile from '@/hooks/useDetectMobile'
 
 import { useLocation } from 'react-router-dom'
+import Rnb from './rnb/Rnb'
 
 export default function Layout() {
   const syncMaximizedFromCookie = useWindowStore((s) => s.syncMaximizedFromCookie)
@@ -27,6 +28,7 @@ export default function Layout() {
     <div className="w-screen h-screen relative overflow-hidden">
       <BgWallpaper />
 
+      {!isMobile && <Rnb />}
       {!isMobile && <Header />}
 
       {location.pathname !== '/' && <Main />}

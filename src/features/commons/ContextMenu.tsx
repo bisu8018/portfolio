@@ -28,18 +28,18 @@ export default function ContextMenu(props: ContextMenuProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   // 바깥 클릭 시 닫기 (anchor, wrapper 내부 클릭은 무시)
-  useOnClickOutside(
+  useOnClickOutside({
     ref,
-    () => {
+    handler: () => {
       if (open) onClose()
     },
-    [open, onClose, anchor],
-    (target) => {
+    deps: [open, onClose, anchor],
+    extraIgnore: (target) => {
       const isInAnchor = anchor && anchor.contains(target)
       const isInWrapper = anchor && anchor.parentElement && anchor.parentElement.contains(target)
       return Boolean(isInAnchor || isInWrapper)
     },
-  )
+  })
 
   // anchor 기준 위치 계산
   const style = useAnchorPosition(anchor)
