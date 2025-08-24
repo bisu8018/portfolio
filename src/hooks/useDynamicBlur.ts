@@ -1,3 +1,5 @@
+import { useParallaxControlStore } from '@/stores/parallaxControlStore'
+import { useWindowStore } from '@/stores/windowStore'
 import { useState, useEffect } from 'react'
 
 /**
@@ -8,8 +10,15 @@ import { useState, useEffect } from 'react'
  */
 export default function useDynamicBlur(minBlur: number = 6, maxBlur: number = 32) {
   const [blur, setBlur] = useState(minBlur)
+  const controlEnabled = useParallaxControlStore((s) => s.enabled)
+  const isMaximized = useWindowStore((s: { isMaximized: boolean }) => s.isMaximized)
+  const enabled = controlEnabled && !isMaximized
 
   useEffect(() => {
+    if (!enabled) {
+      setBlur(minBlur)
+      return
+    }
     const handleMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window
       const x = e.clientX
@@ -20,12 +29,13 @@ export default function useDynamicBlur(minBlur: number = 6, maxBlur: number = 32
       const dist = Math.sqrt(dx * dx + dy * dy)
       // 최대 거리 기준 blur 계산
       const maxDist = Math.sqrt((innerWidth / 2) ** 2 + (innerHeight / 2) ** 2)
-      const blurValue = minBlur + Math.min(maxBlur - minBlur, (dist / maxDist) * (maxBlur - minBlur))
+      const blurValue =
+        minBlur + Math.min(maxBlur - minBlur, (dist / maxDist) * (maxBlur - minBlur))
       setBlur(blurValue)
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [minBlur, maxBlur])
+  }, [minBlur, maxBlur, enabled])
 
   return blur
 }

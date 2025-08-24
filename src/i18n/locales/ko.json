@@ -68,5 +68,17 @@
     "am": "오전",
     "pm": "오후",
     "format": "{{month}}월 {{day}}일 ({{week}}) {{ampm}} {{hour}}:{{min}}"
+  },
+  "weather": {
+    "clear": "청명함",
+    "cloudy": "구름많음",
+    "rain": "비",
+    "snow": "눈",
+    "unknown": "알수없음",
+    "loading": "로딩 중...",
+  "seoul": "서울",
+  "newyork": "뉴욕",
+    "high": "최고",
+    "low": "최저"
   }
 }

@@ -13,7 +13,7 @@ import { useWindowStore } from '@/stores/windowStore'
 
 import useForceMaximizeOnMobile from '@/hooks/useForceMaximizeOnMobile'
 import useDetectMobile from '@/hooks/useDetectMobile'
-import useMainDynamicMaxWidth from '@/hooks/main/useMainDynamicMaxWidth'
+import useMainDynamicMaxWidth from '@/hooks/useMainDynamicMaxWidth'
 import Menu from './Menu'
 
 export default function Main() {

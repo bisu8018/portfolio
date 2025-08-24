@@ -14,22 +14,22 @@ export default function MetaTag() {
 
   // 라우트별 i18n 키 매핑
   const metaKeyMap: Record<string, { key: string; ogImage: string; canonical: string }> = {
-    [ROUTE_PATHS.MAIN_PAGE]: {
+    [ROUTE_PATHS.PORTFOLIO.MAIN_PAGE]: {
       key: 'main',
       ogImage: 'https://yourdomain.com/og-main.png',
       canonical: 'https://yourdomain.com/',
     },
-    [ROUTE_PATHS.ABOUT]: {
+    [ROUTE_PATHS.PORTFOLIO.ABOUT]: {
       key: 'about',
       ogImage: 'https://yourdomain.com/og-about.png',
       canonical: 'https://yourdomain.com/about',
     },
-    [ROUTE_PATHS.CAREER]: {
+    [ROUTE_PATHS.PORTFOLIO.CAREER]: {
       key: 'career',
       ogImage: 'https://yourdomain.com/og-career.png',
       canonical: 'https://yourdomain.com/career',
     },
-    [ROUTE_PATHS.CONTACT]: {
+    [ROUTE_PATHS.PORTFOLIO.CONTACT]: {
       key: 'contact',
       ogImage: 'https://yourdomain.com/og-contact.png',
       canonical: 'https://yourdomain.com/contact',

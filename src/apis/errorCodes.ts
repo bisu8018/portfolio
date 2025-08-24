@@ -1,0 +1,12 @@
+// 범용 에러 코드 상수
+export const ERROR_CODES = {
+  NETWORK: 'NETWORK_ERROR',
+  TIMEOUT: 'TIMEOUT_ERROR',
+  NOT_FOUND: 'NOT_FOUND',
+  UNAUTHORIZED: 'UNAUTHORIZED',
+  FORBIDDEN: 'FORBIDDEN',
+  SERVER: 'SERVER_ERROR',
+  UNKNOWN: 'UNKNOWN_ERROR',
+} as const;
+
+export type ErrorCode = typeof ERROR_CODES[keyof typeof ERROR_CODES];

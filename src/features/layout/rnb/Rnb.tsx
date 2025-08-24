@@ -3,7 +3,8 @@ import { useRef, useEffect } from 'react'
 import { useRnbStore } from '@/stores/rnbStore'
 import { useOnClickOutside } from '@/hooks/common/useOnClickOutside'
 import RnbParallaxToggleBtn from './RnbParallaxToggleBtn'
-import RnbGradient from './RnbGradient'
+import GlassLayeredBox from '@/features/commons/GlassLayeredBox'
+import RnbWeatherWidget from './RnbWeatherWidget'
 
 /**
  * macOS 스타일 우측 내비게이션(RNB) 패널 컴포넌트
@@ -39,13 +40,17 @@ export default function Rnb() {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: '100%', opacity: 0 }}
           transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
-          className="fixed top-[28px] right-0 h-[calc(100%-28px)] w-[300px] z-50 flex flex-col py-3 px-5"
+          className="fixed top-[28px] right-0 h-[calc(100%-28px)] w-[440px] z-50 p-5"
         >
-          <RnbGradient />
-
-          <div className="relative z-10 flex flex-col h-full">
-            <RnbParallaxToggleBtn />
-          </div>
+          <GlassLayeredBox radius={10}>
+            <div className="w-full h-full relative flex flex-col p-5 gap-5">
+              <RnbParallaxToggleBtn />
+              <div className="flex gap-5">
+                <RnbWeatherWidget countryCode="kr" />
+                <RnbWeatherWidget countryCode="us" />
+              </div>
+            </div>
+          </GlassLayeredBox>
         </motion.aside>
       )}
     </AnimatePresence>

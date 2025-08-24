@@ -68,5 +68,17 @@
     "am": "AM",
     "pm": "PM",
     "format": "{{month}}/{{day}} ({{week}}) {{ampm}} {{hour}}:{{min}}"
+  },
+  "weather": {
+    "clear": "Clear",
+    "cloudy": "Cloudy",
+    "rain": "Rain",
+    "snow": "Snow",
+    "unknown": "Unknown",
+    "loading": "Loading...",
+  "seoul": "Seoul",
+  "newyork": "New York",
+    "high": "High",
+    "low": "Low"
   }
 }

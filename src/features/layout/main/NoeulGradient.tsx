@@ -6,14 +6,17 @@
  */
 import { useRef, useEffect, useState } from 'react'
 import { useWindowStore } from '@/stores/windowStore'
+import { useParallaxControlStore } from '@/stores/parallaxControlStore'
 
 export default function NoeulGradient() {
+  const controlEnabled = useParallaxControlStore((s) => s.enabled)
   const mainRef = useRef<HTMLDivElement>(null)
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 })
   const isMaximized = useWindowStore((s: { isMaximized: boolean }) => s.isMaximized)
+  const enabled = controlEnabled && !isMaximized
 
   useEffect(() => {
-    if (isMaximized) {
+    if (!enabled) {
       setMouse({ x: 0.5, y: 0.5 })
       return
     }
@@ -27,25 +30,11 @@ export default function NoeulGradient() {
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [isMaximized])
-
-  useEffect(() => {
-    if (isMaximized) return
-    const handleMouseMove = (e: MouseEvent) => {
-      const main = mainRef.current
-      if (!main) return
-      const { width, height, left, top } = main.getBoundingClientRect()
-      const x = Math.min(Math.max((e.clientX - left) / width, 0), 1)
-      const y = Math.min(Math.max((e.clientY - top) / height, 0), 1)
-      setMouse({ x, y })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [isMaximized])
+  }, [enabled])
 
   // 최대화 상태면 opacity 0으로 처리
-  const pinkOpacity = isMaximized ? 0 : (1 - mouse.x) * (1 - mouse.y) * 0.4
-  const purpleOpacity = isMaximized ? 0 : mouse.x * mouse.y * 0.4
+  const pinkOpacity = !enabled ? 0 : (1 - mouse.x) * (1 - mouse.y) * 0.4
+  const purpleOpacity = !enabled ? 0 : mouse.x * mouse.y * 0.4
 
   return (
     <>

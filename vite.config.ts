@@ -17,6 +17,8 @@ export default defineConfig({
       '@/features': resolve(__dirname, 'src/features'),
       '@/constants': resolve(__dirname, 'src/constants'),
       '@/assets': resolve(__dirname, 'src/assets'),
+      '@/apis': resolve(__dirname, 'src/apis'),
+      '@/models': resolve(__dirname, 'src/models'),
     },
   },
 })
