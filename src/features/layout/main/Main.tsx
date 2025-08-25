@@ -25,7 +25,7 @@ export default function Main() {
   const { ref } = useParallaxTilt({
     max: 2,
     speed: 200,
-    enabled: !isMaximized,
+    enabled: true,
   })
   const blur = useDynamicBlur(5, 14)
 

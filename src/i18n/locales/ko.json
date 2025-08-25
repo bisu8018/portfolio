@@ -53,7 +53,9 @@
   },
   "rnb": {
     "parallaxOn": "패럴랙스 효과 켜기",
-    "parallaxOff": "패럴랙스 효과 끄기"
+    "parallaxOff": "패럴랙스 효과 끄기",
+    "rainOn": "비 효과 켜기",
+    "rainOff": "비 효과 끄기"
   },
   "date": {
     "week": {

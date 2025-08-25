@@ -1,7 +1,7 @@
 import Header from './header/Header'
 import Footer from './footer/Footer'
 import Main from './main/Main'
-import BgWallpaper from './BgWallpaper'
+import Wallpaper from './wallpaper/Wallpaper'
 import { useEffect } from 'react'
 import { useWindowStore } from '@/stores/windowStore'
 import useDetectMobile from '@/hooks/useDetectMobile'
@@ -26,7 +26,7 @@ export default function Layout() {
 
   return (
     <div className="w-screen h-screen relative overflow-hidden">
-      <BgWallpaper />
+      <Wallpaper />
 
       {!isMobile && <Rnb />}
       {!isMobile && <Header />}

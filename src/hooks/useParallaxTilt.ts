@@ -1,20 +1,28 @@
 import { useRef, useEffect } from 'react'
 import { useMobileStore } from '@/stores/mobileStore'
 import { useParallaxControlStore } from '@/stores/parallaxControlStore'
+import { useWindowStore } from '@/stores/windowStore'
 
 interface ParallaxTiltOptions {
   max?: number
-  speed?: number 
+  speed?: number
   enabled?: boolean
-  global?: boolean 
+  global?: boolean
 }
 
-function useParallaxTilt({ max = 10, speed = 300, enabled, global = true }: ParallaxTiltOptions = {}) {
+function useParallaxTilt({
+  max = 10,
+  speed = 300,
+  enabled,
+  global = true,
+}: ParallaxTiltOptions = {}) {
   const isMobile = useMobileStore((s) => s.isMobile)
+  const isMinimized = useWindowStore((s) => s.isMinimized)
+  const isMaximized = useWindowStore((s) => s.isMaximized)
   const ref = useRef<HTMLElement>(null)
   const frame = useRef<number | null>(null)
   const controlEnabled = useParallaxControlStore((s) => s.enabled)
-  const isEnabled = controlEnabled ? enabled : false
+  const isEnabled = controlEnabled && enabled !== false && !isMobile && !isMinimized && !isMaximized
 
   // clamp 함수
   const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v))
@@ -80,13 +88,13 @@ function useParallaxTilt({ max = 10, speed = 300, enabled, global = true }: Para
 
   // enabled가 false로 바뀌거나 모바일이면 transform/transition 초기화
   useEffect(() => {
-    if (isEnabled && !isMobile) return
+    if (isEnabled) return
 
     if (ref.current) {
       ref.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)'
       ref.current.style.transition = `transform ${speed}ms cubic-bezier(0.22, 1, 0.36, 1)`
     }
-  }, [isEnabled, speed, isMobile])
+  }, [isEnabled, speed])
 
   return { ref }
 }

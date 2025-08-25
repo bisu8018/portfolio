@@ -97,7 +97,7 @@ const RnbWeatherWidget: React.FC<RnbWeatherWidgetProps> = ({
 
   return (
     <div
-      className={`w-[170px] h-[170px] rounded-2xl p-4 flex flex-col cursor-pointer justify-between text-white shadow-xl ${bg}`}
+      className={`w-[170px] h-[170px] rounded-2xl p-4 flex flex-col cursor-pointer justify-between text-white shadow-xl relative overflow-hidden ${bg}`}
       style={{ fontFamily: 'SF Pro Display, sans-serif' }}
       onClick={handleWidgetClick}
       role="button"
@@ -107,17 +107,69 @@ const RnbWeatherWidget: React.FC<RnbWeatherWidgetProps> = ({
       }}
       title={t(cityKey) + ' ' + label}
     >
-      <div className="flex flex-col gap-1">
+      {/* Glassmorphism 입체감 레이어 */}
+      <div
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          background: 'rgba(255,255,255,0.13)',
+          border: '2.5px solid rgba(255,255,255,0.22)',
+          boxShadow: '0 4px 32px 0 rgba(31,38,135,0.13), 0 1.5px 0 0 rgba(255,255,255,0.18)',
+          zIndex: 1,
+        }}
+      />
+      {/* 상단 하이라이트 (더 강하게) */}
+      <div
+        className="absolute left-0 top-0 w-full h-1/3 rounded-t-2xl pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0.08) 80%,transparent)',
+          opacity: 0.85,
+          zIndex: 2,
+        }}
+      />
+      {/* 하단 그림자 (더 진하게) */}
+      <div
+        className="absolute left-0 bottom-0 w-full h-1/2 rounded-b-2xl pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(0deg,rgba(31,38,135,0.18),rgba(255,255,255,0.01) 60%,transparent)',
+          opacity: 0.85,
+          zIndex: 2,
+        }}
+      />
+      {/* 유리 반사광(곡면 느낌) */}
+      <div
+        className="absolute left-1/2 top-1/3 w-3/4 h-1/6 rounded-full pointer-events-none"
+        style={{
+          transform: 'translate(-50%, -50%)',
+          background:
+            'linear-gradient(90deg,rgba(255,255,255,0.22) 0%,rgba(255,255,255,0.08) 100%)',
+          filter: 'blur(6px)',
+          opacity: 0.7,
+          zIndex: 3,
+        }}
+      />
+      {/* 유리 inner shadow (더 깊게) */}
+      <div
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{
+          boxShadow:
+            'inset 0 4px 18px 0 rgba(255,255,255,0.18), inset 0 -4px 24px 0 rgba(31,38,135,0.16)',
+          zIndex: 2,
+        }}
+      />
+      {/* 실제 컨텐츠 */}
+      <div className="relative z-10 flex flex-col gap-1">
         <span className="text-sm font-medium">{t(cityKey)}</span>
         <span className="text-5xl font-semibold leading-tight">
           {Math.round(weather.temperature)}°
         </span>
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="relative z-10 flex flex-col gap-1">
         <span className="text-lg">{icon}</span>
         <span className="text-xs">{label}</span>
-        {/* 최고/최저 온도는 weatherStore에 추가 필요 */}
-        {/* <span className="text-xs">{t('weather.high')}:34° {t('weather.low')}:26°</span> */}
       </div>
     </div>
   )

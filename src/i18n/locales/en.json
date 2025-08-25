@@ -53,7 +53,9 @@
   },
   "rnb": {
     "parallaxOn": "Enable Parallax Effect",
-    "parallaxOff": "Disable Parallax Effect"
+    "parallaxOff": "Disable Parallax Effect",
+    "rainOn": "Enable Rain Effect",
+    "rainOff": "Disable Rain Effect"
   },
   "date": {
     "week": {
