@@ -1,6 +1,6 @@
 import Header from './header/Header'
 import Footer from './footer/Footer'
-import Main from './main/Main'
+import Window from './window/Window'
 import Wallpaper from './wallpaper/Wallpaper'
 import { useEffect } from 'react'
 import { useWindowStore } from '@/stores/windowStore'
@@ -31,7 +31,7 @@ export default function Layout() {
       {!isMobile && <Rnb />}
       {!isMobile && <Header />}
 
-      {location.pathname !== '/' && <Main />}
+      {location.pathname !== '/' && <Window />}
 
       {!isMobile && <Footer />}
     </div>

@@ -1,5 +1,5 @@
 /**
- * Main 컴포넌트
+ * Window 컴포넌트
  * 메인 컨텐츠 영역을 담당합니다.
  * @component
  * @returns {JSX.Element} 메인 영역
@@ -7,16 +7,16 @@
 import { Outlet } from 'react-router-dom'
 import useDynamicBlur from '@/hooks/useDynamicBlur'
 import useParallaxTilt from '@/hooks/useParallaxTilt'
-import Lnb from '../lnb/Lnb'
-import NoeulGradient from './NoeulGradient'
+import WindowLnb from './windowLnb/WindowLnb'
+import WindowNoeulGradient from './WindowNoeulGradient'
 import { useWindowStore } from '@/stores/windowStore'
 
 import useForceMaximizeOnMobile from '@/hooks/useForceMaximizeOnMobile'
 import useDetectMobile from '@/hooks/useDetectMobile'
 import useMainDynamicMaxWidth from '@/hooks/useMainDynamicMaxWidth'
-import Menu from './Menu'
+import MobileMenu from './MobileMenu'
 
-export default function Main() {
+export default function Window() {
   useForceMaximizeOnMobile()
   const isMobile = useDetectMobile()
   const dynamicMaxWidth = useMainDynamicMaxWidth()
@@ -47,10 +47,10 @@ export default function Main() {
           backdropFilter: `blur(${blur}px) saturate(180%)`,
         }}
       >
-        <NoeulGradient />
-        {isMobile ? <Menu /> : <Lnb />}
+        <WindowNoeulGradient />
+        {isMobile ? <MobileMenu /> : <WindowLnb />}
 
-        <div className="p-10">
+        <div className="flex-1 min-w-0 p-10">
           <Outlet />
         </div>
       </div>

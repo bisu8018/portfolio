@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { ROUTE_PATHS } from '@/constants/routePaths'
 
-export default function Menu() {
+export default function MobileMenu() {
   const [open, setOpen] = useState(false)
   const { t } = useTranslation()
   const navigate = useNavigate()

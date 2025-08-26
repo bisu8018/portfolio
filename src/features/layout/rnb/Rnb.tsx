@@ -57,7 +57,7 @@ export default function Rnb() {
         transition: { duration: 0.28, ease: [0.4, 0, 0.2, 1] },
       }}
       style={{ display: isVisible ? undefined : 'none' }}
-      className="fixed top-[28px] right-0 h-[calc(100%-28px)] w-[440px] z-50 p-5 h-fit"
+      className="fixed top-[28px] right-0 h-fit w-[440px] z-50 p-5"
     >
       <GlassLayeredBox radius={10}>
         <div className="w-full h-full relative flex flex-col p-5 gap-5">

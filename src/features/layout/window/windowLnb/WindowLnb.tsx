@@ -1,5 +1,5 @@
 /**
- * Lnb 컴포넌트
+ * WindowLnb 컴포넌트
  * 좌측 내비게이션 바를 렌더링합니다.
  * @component
  * @returns {JSX.Element} 내비게이션 바
@@ -7,17 +7,17 @@
 import { useLnbDynamicMaxWidth } from '@/hooks/lnb/useLnbDynamicMaxWidth'
 import { ResizableBox } from 'react-resizable'
 import 'react-resizable/css/styles.css'
-import CWindowToolBtns from '../../commons/CWindowToolBtns'
 import { useWindowStore } from '@/stores/windowStore'
-import LnbProfile from './LnbProfile'
-import LnbMenu from './LnbMenu'
+import WindowLnbProfile from './WindowLnbProfile'
+import WindowLnbMenu from './WindowLnbMenu'
 
 import { useNavigate } from 'react-router-dom'
 import { ROUTE_PATHS } from '@/constants/routePaths'
-import LnbFooter from './LnbFooter'
+import WindowLnbFooter from './WindowLnbFooter'
 import { useTranslation } from 'react-i18next'
+import CWindowToolBtns from '@/features/commons/CWindowToolBtns'
 
-export default function Lnb() {
+export default function WindowLnb() {
   const navigate = useNavigate()
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const [maxWidth] = useLnbDynamicMaxWidth(466)
@@ -43,43 +43,43 @@ export default function Lnb() {
     >
       <aside className="h-full min-h-[100%] pt-15 pb-6 px-5 flex flex-col items-center bg-[rgba(255,255,255,0.18)] [backdrop-filter:blur(16px)_saturate(180%)] relative border-r border-gray-200">
         {!isMaximized && <CWindowToolBtns className="left-6 top-6" />}
-        <LnbProfile />
+        <WindowLnbProfile />
 
-        <LnbMenu.Root className="mt-4">
-          <LnbMenu.Item
+        <WindowLnbMenu.Root className="mt-4">
+          <WindowLnbMenu.Item
             icon={<span className="">🏠</span>}
             onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.MAIN_PAGE)}
             selected={currentPath === ROUTE_PATHS.PORTFOLIO.MAIN_PAGE}
           >
             {t('lnb.home', '홈')}
-          </LnbMenu.Item>
-        </LnbMenu.Root>
+          </WindowLnbMenu.Item>
+        </WindowLnbMenu.Root>
 
-        <LnbMenu.Root className="mt-2">
-          <LnbMenu.Item
+        <WindowLnbMenu.Root className="mt-2">
+          <WindowLnbMenu.Item
             icon={<span className="">👤</span>}
             onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.ABOUT)}
             selected={currentPath === ROUTE_PATHS.PORTFOLIO.ABOUT}
           >
             {t('lnb.about', '소개')}
-          </LnbMenu.Item>
-          <LnbMenu.Item
+          </WindowLnbMenu.Item>
+          <WindowLnbMenu.Item
             icon={<span className="">💼</span>}
             onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.CAREER)}
             selected={currentPath === ROUTE_PATHS.PORTFOLIO.CAREER}
           >
             {t('lnb.career', '경력')}
-          </LnbMenu.Item>
-          <LnbMenu.Item
+          </WindowLnbMenu.Item>
+          <WindowLnbMenu.Item
             icon={<span className="">✉️</span>}
             onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.CONTACT)}
             selected={currentPath === ROUTE_PATHS.PORTFOLIO.CONTACT}
           >
             {t('lnb.contact', '연락처')}
-          </LnbMenu.Item>
-        </LnbMenu.Root>
+          </WindowLnbMenu.Item>
+        </WindowLnbMenu.Root>
 
-        <LnbFooter />
+        <WindowLnbFooter />
       </aside>
     </ResizableBox>
   )

@@ -1,5 +1,5 @@
 /**
- * LnbMenu 컴포넌트
+ * WindowLnbMenu 컴포넌트
  * 내비게이션 바의 메뉴 영역을 렌더링합니다.
  * @component
  * @returns {JSX.Element} 메뉴 영역
@@ -7,16 +7,16 @@
 import { createContext, useContext } from 'react'
 import clsx from 'clsx'
 
-type LnbMenuProps = {
+type WindowLnbMenuProps = {
   children: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>
 
-const LnbMenuContext = createContext(false)
+const WindowLnbMenuContext = createContext(false)
 
-function Root({ children, className, ...props }: LnbMenuProps) {
+function Root({ children, className, ...props }: WindowLnbMenuProps) {
   const items = Array.isArray(children) ? children : [children]
   return (
-    <LnbMenuContext.Provider value={true}>
+    <WindowLnbMenuContext.Provider value={true}>
       <div className={clsx('rounded-lg w-full', className)} {...props}>
         {items.map((child, idx) => {
           const isLast = idx === items.length - 1
@@ -34,7 +34,7 @@ function Root({ children, className, ...props }: LnbMenuProps) {
           return child
         })}
       </div>
-    </LnbMenuContext.Provider>
+    </WindowLnbMenuContext.Provider>
   )
 }
 
@@ -55,9 +55,9 @@ function Item({
   onClick?: () => void
   selected?: boolean
 }) {
-  const inRoot = useContext(LnbMenuContext)
+  const inRoot = useContext(WindowLnbMenuContext)
   if (!inRoot) {
-    throw new Error('LnbMenu.Item must be used within LnbMenu.Root.')
+    throw new Error('WindowLnbMenu.Item must be used within WindowLnbMenu.Root.')
   }
 
   const radiusClass =
@@ -83,9 +83,9 @@ function Item({
   )
 }
 
-const LnbMenu = {
+const WindowLnbMenu = {
   Root,
   Item,
 }
 
-export default LnbMenu
+export default WindowLnbMenu

@@ -1,5 +1,5 @@
 /**
- * LnbProfile 컴포넌트
+ * WindowLnbProfile 컴포넌트
  * 내비게이션 바의 프로필 영역을 렌더링합니다.
  * @component
  * @returns {JSX.Element} 프로필 영역
@@ -8,7 +8,10 @@
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 
-export default function LnbProfile({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+export default function WindowLnbProfile({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   const { t } = useTranslation()
   return (
     <>

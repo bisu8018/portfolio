@@ -1,5 +1,5 @@
 /**
- * NoeulGradient 컴포넌트
+ * WindowNoeulGradient 컴포넌트
  * 메인 영역의 그라데이션 배경을 렌더링합니다.
  * @component
  * @returns {JSX.Element} 그라데이션 배경
@@ -8,7 +8,7 @@ import { useRef, useEffect, useState } from 'react'
 import { useWindowStore } from '@/stores/windowStore'
 import { useParallaxControlStore } from '@/stores/parallaxControlStore'
 
-export default function NoeulGradient() {
+export default function WindowNoeulGradient() {
   const controlEnabled = useParallaxControlStore((s) => s.enabled)
   const mainRef = useRef<HTMLDivElement>(null)
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 })
