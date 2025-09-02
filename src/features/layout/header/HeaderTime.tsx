@@ -9,7 +9,9 @@ import { useClock } from '@/hooks/useClock'
 import { useWindowStore } from '@/stores/windowStore'
 import { useRnbStore } from '@/stores/rnbStore'
 
-export default function HeaderTime() {
+type HeaderTimeProps = React.HTMLAttributes<HTMLTimeElement>
+
+export default function HeaderTime({ className, ...props }: HeaderTimeProps) {
   const { now, formatDate } = useClock()
   const setOpen = useRnbStore((s) => s.setOpen)
   const open = useRnbStore((s) => s.open)
@@ -28,11 +30,13 @@ export default function HeaderTime() {
       className={clsx(
         'text-sm select-none tracking-tighter',
         isMaximized ? 'text-[#1a1a1a]' : 'text-white',
+        className,
       )}
       dateTime={now.toISOString()}
       aria-label={timeString}
       title={timeString}
       role="timer"
+      {...props}
     >
       {timeString}
     </time>

@@ -2,10 +2,7 @@ import React, { useState } from 'react'
 import { useWindowStore } from '@/stores/windowStore'
 import clsx from 'clsx'
 
-type HeaderItemWrapperProps = {
-  children: React.ReactNode
-  className?: string
-}
+type HeaderItemWrapperProps = React.HTMLAttributes<HTMLDivElement>
 
 /**
  * HeaderItemWrapper 컴포넌트
@@ -13,13 +10,7 @@ type HeaderItemWrapperProps = {
  * @component
  * @returns {JSX.Element} 헤더 아이템 래퍼
  */
-function HeaderItemChildWrapper({
-  child,
-  className,
-}: {
-  child: React.ReactNode
-  className?: string
-}) {
+function HeaderItemChildWrapper({ children, className }: HeaderItemWrapperProps) {
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const [isActive, setIsActive] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -28,14 +19,14 @@ function HeaderItemChildWrapper({
     menuOpen: boolean
     setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
   }
-  const childWithProps = React.isValidElement<MenuControlProps>(child)
-    ? React.cloneElement(child, { menuOpen, setMenuOpen })
-    : child
+  const childWithProps = React.isValidElement<MenuControlProps>(children)
+    ? React.cloneElement(children, { menuOpen, setMenuOpen })
+    : children
 
   return (
     <div
       className={clsx(
-        'transition-colors px-2 py-0.5 rounded-md flex items-center justify-center cursor-pointer',
+        'transition-colors px-2 py-0.5 rounded-md flex items-center justify-center',
         isActive || menuOpen
           ? isMaximized
             ? 'bg-gray-400/20'
@@ -64,7 +55,7 @@ export default function HeaderItemWrapper({ children, className }: HeaderItemWra
   return (
     <div className={clsx('absolute right-4 gap-1 flex items-center', className)}>
       {React.Children.map(children, (child, idx) => (
-        <HeaderItemChildWrapper key={idx} child={child} />
+        <HeaderItemChildWrapper key={idx}>{child}</HeaderItemChildWrapper>
       ))}
     </div>
   )

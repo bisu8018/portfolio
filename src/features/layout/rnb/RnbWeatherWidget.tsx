@@ -1,6 +1,7 @@
 import React from 'react'
 import { useCurrentWeather } from '@/hooks/apis/useCurrentWeather'
 import { useTranslation } from 'react-i18next'
+import clsx from 'clsx'
 
 // 날씨 코드별 배경색 매핑 (예시)
 // 시간대(주간/야간) + 날씨별 배경색 매핑
@@ -39,7 +40,7 @@ function getWeatherInfo(weathercode: number, isDay: number, t: (k: string) => st
   return { label: t('weather.unknown'), bg: weatherBgMap[timeKey].etc, icon: '❔' }
 }
 
-interface RnbWeatherWidgetProps {
+interface RnbWeatherWidgetProps extends React.HTMLAttributes<HTMLDivElement> {
   countryCode?: string // ISO 2자리 (예: 'kr', 'us', 'jp')
   cityKeyMap?: Record<string, string> // 언어코드별 도시 i18n 키 매핑
 }
@@ -50,10 +51,13 @@ const defaultCityKeyMap: Record<string, string> = {
   // 예시: 'ja': 'weather.tokyo', 'fr': 'weather.paris' 등 추가 가능
 }
 
-const RnbWeatherWidget: React.FC<RnbWeatherWidgetProps> = ({
+function RnbWeatherWidget({
   countryCode = 'kr',
   cityKeyMap = defaultCityKeyMap,
-}) => {
+  className,
+  style,
+  ...props
+}: RnbWeatherWidgetProps) {
   // countryCode를 WeatherCountryCode('KR' | 'US')로 변환 (기본값 'KR')
   const weatherCountry: 'KR' | 'US' = countryCode?.toUpperCase?.() === 'US' ? 'US' : 'KR'
   const { data: weather, loading } = useCurrentWeather(weatherCountry)
@@ -97,8 +101,12 @@ const RnbWeatherWidget: React.FC<RnbWeatherWidgetProps> = ({
 
   return (
     <div
-      className={`w-[170px] h-[170px] rounded-2xl p-4 flex flex-col cursor-pointer justify-between text-white shadow-xl relative overflow-hidden ${bg}`}
-      style={{ fontFamily: 'SF Pro Display, sans-serif' }}
+      className={clsx(
+        'w-[170px] h-[170px] rounded-2xl p-4 flex flex-col cursor-pointer justify-between text-white shadow-xl relative overflow-hidden',
+        bg,
+        className,
+      )}
+      style={{ fontFamily: 'SF Pro Display, sans-serif', ...style }}
       onClick={handleWidgetClick}
       role="button"
       tabIndex={0}
@@ -106,6 +114,7 @@ const RnbWeatherWidget: React.FC<RnbWeatherWidgetProps> = ({
         if (e.key === 'Enter' || e.key === ' ') handleWidgetClick()
       }}
       title={t(cityKey) + ' ' + label}
+      {...props}
     >
       {/* Glassmorphism 입체감 레이어 */}
       <div

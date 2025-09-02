@@ -11,7 +11,7 @@ import HeaderLangIconContextMenu from './HeaderLangIconContextMenu'
  * @returns {JSX.Element} 언어 아이콘
  */
 
-type HeaderLangProps = React.HTMLAttributes<HTMLSpanElement> & {
+interface HeaderLangProps extends React.HTMLAttributes<HTMLSpanElement> {
   menuOpen?: boolean
   setMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }

@@ -82,5 +82,9 @@
   "newyork": "New York",
     "high": "High",
     "low": "Low"
+  },
+  "header": {
+    "parallax": "Parallax Effect",
+    "rain": "Rain Effect"
   }
 }

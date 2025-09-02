@@ -1,17 +1,11 @@
 import React from 'react'
 import clsx from 'clsx'
 
-interface GlassLayeredBoxOwnProps {
+interface GlassLayeredBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: string | number
   height?: string | number
   radius?: string | number
-  className?: string
-  style?: React.CSSProperties
-  children?: React.ReactNode
 }
-
-type GlassLayeredBoxProps = GlassLayeredBoxOwnProps & React.HTMLAttributes<HTMLDivElement>
-
 /**
  * Glassmorphism 레이어드 효과를 재사용할 수 있는 컴포넌트
  * width/height/radius 등은 px, rem, %, tailwind 등 자유롭게 지정 가능
@@ -21,8 +15,9 @@ export default function GlassLayeredBox({
   height,
   radius = '1.5rem',
   className = '',
-  style = {},
   children,
+  style,
+  ...props
 }: GlassLayeredBoxProps) {
   const sizeStyle = {
     ...(width !== undefined ? { width } : {}),
@@ -35,9 +30,9 @@ export default function GlassLayeredBox({
         'backdrop-blur-[3px]',
         width ? undefined : 'w-auto',
         height ? undefined : 'h-auto',
-        className,
       )}
       style={{ ...sizeStyle, ...style }}
+      {...props}
     >
       <div
         className={clsx('absolute w-full h-full rounded-[inherit]')}
@@ -100,7 +95,12 @@ export default function GlassLayeredBox({
           zIndex: -1,
         }}
       />
-      <div className="relative w-full h-full flex items-center justify-center select-none rounded-[inherit] pointer-events-auto">
+      <div
+        className={clsx(
+          'relative w-full h-full flex items-center justify-center select-none rounded-[inherit] pointer-events-auto',
+          className,
+        )}
+      >
         {children}
       </div>
     </div>

@@ -2,10 +2,8 @@ import { motion } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { useRnbStore } from '@/stores/rnbStore'
 import { useOnClickOutside } from '@/hooks/common/useOnClickOutside'
-import RnbParallaxToggleBtn from './RnbParallaxToggleBtn'
 import GlassLayeredBox from '@/features/commons/GlassLayeredBox'
 import RnbWeatherWidget from './RnbWeatherWidget'
-import RnbRainToggleBtn from './RnbRainToggleBtn'
 
 /**
  * macOS 스타일 우측 내비게이션(RNB) 패널 컴포넌트
@@ -61,10 +59,6 @@ export default function Rnb() {
     >
       <GlassLayeredBox radius={10}>
         <div className="w-full h-full relative flex flex-col p-5 gap-5">
-          <div className="flex gap-x-3">
-            <RnbParallaxToggleBtn />
-            <RnbRainToggleBtn />
-          </div>
           <div className="flex gap-x-5">
             <RnbWeatherWidget countryCode="kr" />
             <RnbWeatherWidget countryCode="us" />

@@ -82,5 +82,9 @@
   "newyork": "뉴욕",
     "high": "최고",
     "low": "최저"
+  },
+  "header": {
+    "parallax": "패럴랙스 효과",
+    "rain": "비 효과"
   }
 }

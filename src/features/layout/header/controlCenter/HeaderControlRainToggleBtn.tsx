@@ -1,9 +1,9 @@
 import { useRainControlStore } from '@/stores/rainControlStore'
-import RnbBtnWrapper from '../rnb/RnbBtnWrapper'
+import HeaderControlBtnWrapper from './HeaderControlBtnWrapper'
 import { useTranslation } from 'react-i18next'
 
 /**
- * RnbRainToggleBtn 컴포넌트는 Rain(비) 효과의 활성화/비활성화를 토글하는 버튼입니다.
+ * HeaderControlRainToggleBtn 컴포넌트는 Rain(비) 효과의 활성화/비활성화를 토글하는 버튼입니다.
  *
  * - Rain 상태(`enabled`)에 따라 버튼의 색상과 스타일이 동적으로 변경됩니다.
  * - 버튼 클릭 시 `useRainControlStore`의 `setEnabled`를 호출하여 Rain 효과를 토글합니다.
@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next'
  *
  * @component
  */
-export default function RnbRainToggleBtn() {
+export default function HeaderControlRainToggleBtn() {
   const enabled = useRainControlStore((s) => s.enabled)
   const setEnabled = useRainControlStore((s) => s.setEnabled)
   const { t } = useTranslation()
@@ -20,7 +20,7 @@ export default function RnbRainToggleBtn() {
   const iconStroke = enabled ? '#f87171' : '#fff'
 
   return (
-    <RnbBtnWrapper
+    <HeaderControlBtnWrapper
       enabled={enabled}
       onClick={() => setEnabled(!enabled)}
       title={enabled ? t('rnb.rainOff') : t('rnb.rainOn')}
@@ -39,6 +39,6 @@ export default function RnbRainToggleBtn() {
           fill={iconStroke}
         />
       </svg>
-    </RnbBtnWrapper>
+    </HeaderControlBtnWrapper>
   )
 }

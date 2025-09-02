@@ -10,12 +10,15 @@ import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import CWindowToolBtns from '../../commons/CWindowToolBtns'
 import HeaderTime from './HeaderTime'
-import HeaderNetStatus from './HeaderNetStatus'
-import HeaderLang from './HeaderLang'
+import HeaderLang from './lang/HeaderLang'
 import HeaderItemWrapper from './HeaderItemWrapper'
 import { useContextMenuStore } from '@/stores/contextMenuStore'
+import HeaderNetStatus from './netStatus/HeaderNetStatus'
+import HeaderControlCenter from './controlCenter/HeaderControlCenter'
 
-export default function Header() {
+type HeaderProps = React.HTMLAttributes<HTMLDivElement>
+
+export default function Header({ className, style, ...props }: HeaderProps) {
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const mouseTopShow = useShowOnMouseTop(32, true)
   const contextMenuVisible = useContextMenuStore((s) => s.visible)
@@ -47,12 +50,15 @@ export default function Header() {
         'fixed w-full h-7 flex items-center z-10',
         show ? '' : 'top-0 left-0 ',
         isMaximized ? 'bg-white shadow-sm' : '',
+        className,
       )}
       style={{
         transition:
           isMaximized && transitionEnabled ? 'transform 0.8s cubic-bezier(0.22,1,0.36,1)' : '',
         transform: show ? 'translateY(0)' : 'translateY(-60px)',
+        ...style,
       }}
+      {...props}
     >
       {isMaximized && (
         <div className="absolute left-4 top-2 z-20 pointer-events-auto">
@@ -63,6 +69,7 @@ export default function Header() {
       <HeaderItemWrapper>
         <HeaderLang />
         <HeaderNetStatus />
+        <HeaderControlCenter />
         <HeaderTime />
       </HeaderItemWrapper>
     </header>

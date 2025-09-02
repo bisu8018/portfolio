@@ -5,7 +5,6 @@ import { useWindowStore } from '@/stores/windowStore'
 interface FooterIconWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   bgColor?: string // tailwind 색상 클래스 또는 hex/rgb 등
   selected?: boolean
-  children: React.ReactNode
   tooltipText?: string
   routePath?: string
 }
@@ -43,8 +42,8 @@ export default function FooterIconWrapper({
     <>
       {tooltipText && (
         <span
-          className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-12 z-20 whitespace-nowrap px-4 py-1 text-xs rounded-md text-gray-900 border border-white/30 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          style={{ overflow: 'visible' }}
+          className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-12 z-20 whitespace-nowrap px-4 py-1 text-xs rounded-md text-gray-900 border border-white/30 bg-white opacity-0 group-hover:opacity-100 duration-0 delay-0"
+          style={{ overflow: 'visible', transitionDelay: '0s', transitionDuration: '0s' }}
         >
           {tooltipText}
           <span
@@ -86,6 +85,7 @@ export default function FooterIconWrapper({
       </div>
     )
   }
+
   return (
     <div
       className={`group relative inline-flex items-center justify-center rounded-xl p-1 size-13 cursor-pointer ${bgColor} ${className}`}

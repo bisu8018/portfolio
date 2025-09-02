@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useWindowStore } from '@/stores/windowStore'
 import { useMobileStore } from '@/stores/mobileStore'
 import { useRainControlStore } from '@/stores/rainControlStore'
+import clsx from 'clsx'
 
 export interface RainDrop {
   left: number
@@ -12,14 +13,18 @@ export interface RainDrop {
   height: number
 }
 
-export interface RainProps {
+export interface RainProps extends React.HTMLAttributes<HTMLDivElement> {
   dropCount?: number
 }
 
 /**
  * RainEffect: 배경에 비 내리는 효과를 렌더링하는 컴포넌트 (framer-motion + tailwind)
  */
-const RainEffect = React.memo(function RainEffect({ dropCount = 40 }: RainProps) {
+const RainEffect = React.memo(function RainEffect({
+  dropCount = 40,
+  className,
+  ...props
+}: RainProps) {
   const isMinimized = useWindowStore((s) => s.isMinimized)
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const isMobile = useMobileStore((s) => s.isMobile)
@@ -41,7 +46,11 @@ const RainEffect = React.memo(function RainEffect({ dropCount = 40 }: RainProps)
   }
   const drops = dropsRef.current
   return (
-    <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
+    <div
+      className={clsx('pointer-events-none absolute inset-0 z-10', className)}
+      aria-hidden="true"
+      {...props}
+    >
       {drops.map((drop, i) => (
         <motion.div
           key={i}

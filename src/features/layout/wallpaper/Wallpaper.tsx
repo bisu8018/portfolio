@@ -9,6 +9,7 @@ import { RainEffect } from './RainEffect'
 
 export default function Wallpaper() {
   const imgRef = useRef<HTMLImageElement>(null)
+
   return (
     <div
       className="fixed top-0 left-0 w-screen h-screen overflow-hidden z-[-9999]"

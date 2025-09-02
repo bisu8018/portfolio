@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import ContextMenu from '@/features/commons/ContextMenu'
 import HeaderLangIcon from './HeaderLangIcon'
 
-interface HeaderLangIconContextMenuProps {
+interface HeaderLangIconContextMenuProps extends React.HTMLAttributes<HTMLDivElement> {
   anchorEl: HTMLElement | null
   open: boolean
   onClose: () => void
@@ -13,12 +13,13 @@ export default function HeaderLangIconContextMenu({
   anchorEl,
   open,
   onClose,
+  ...props
 }: HeaderLangIconContextMenuProps) {
   const { i18n, t } = useTranslation()
 
   return (
     <ContextMenu open={open} anchor={anchorEl} onClose={onClose}>
-      <div className="flex flex-col min-w-[120px] text-sm">
+      <div className="flex flex-col min-w-[120px] text-sm" {...props}>
         <button
           className="text-left flex items-center gap-2 px-3 py-2 hover:bg-white/40 hover:rounded-md cursor-pointer"
           onClick={() => {

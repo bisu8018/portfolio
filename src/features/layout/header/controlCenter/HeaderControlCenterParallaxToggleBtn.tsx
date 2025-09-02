@@ -1,9 +1,9 @@
 import { useParallaxControlStore } from '@/stores/parallaxControlStore'
-import RnbBtnWrapper from './RnbBtnWrapper'
+import HeaderControlBtnWrapper from './HeaderControlBtnWrapper'
 import { useTranslation } from 'react-i18next'
 
 /**
- * RnbParallaxToggleBtn 컴포넌트는 Parallax 효과의 활성화/비활성화를 토글하는 버튼입니다.
+ * HeaderControlCenterParallaxToggleBtn 컴포넌트는 Parallax 효과의 활성화/비활성화를 토글하는 버튼입니다.
  *
  * - Parallax 상태(`enabled`)에 따라 버튼의 색상과 스타일이 동적으로 변경됩니다.
  * - 버튼 클릭 시 `useParallaxStore`의 `setEnabled`를 호출하여 Parallax 효과를 토글합니다.
@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next'
  *
  * @component
  */
-export default function RnbParallaxToggleBtn() {
+export default function HeaderControlCenterParallaxToggleBtn() {
   const enabled = useParallaxControlStore((s) => s.enabled)
   const setEnabled = useParallaxControlStore((s) => s.setEnabled)
   const { t } = useTranslation()
@@ -22,7 +22,7 @@ export default function RnbParallaxToggleBtn() {
   const innerStroke = enabled ? '#f43f5e' : '#fff'
 
   return (
-    <RnbBtnWrapper
+    <HeaderControlBtnWrapper
       enabled={enabled}
       onClick={() => setEnabled(!enabled)}
       title={enabled ? t('rnb.parallaxOff') : t('rnb.parallaxOn')}
@@ -47,6 +47,6 @@ export default function RnbParallaxToggleBtn() {
           <feGaussianBlur stdDeviation="1.5" />
         </filter>
       </svg>
-    </RnbBtnWrapper>
+    </HeaderControlBtnWrapper>
   )
 }

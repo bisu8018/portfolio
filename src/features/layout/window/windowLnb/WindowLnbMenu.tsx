@@ -7,9 +7,17 @@
 import { createContext, useContext } from 'react'
 import clsx from 'clsx'
 
-type WindowLnbMenuProps = {
+interface WindowLnbMenuProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement>
+}
+
+interface WindowLnbMenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  icon: React.ReactNode
+  isLast?: boolean
+  idx?: number
+  itemCount?: number
+  selected?: boolean
+}
 
 const WindowLnbMenuContext = createContext(false)
 
@@ -44,17 +52,10 @@ function Item({
   isLast = false,
   idx = 0,
   itemCount = 1,
-  onClick,
   selected = false,
-}: {
-  icon: React.ReactNode
-  children: React.ReactNode
-  isLast?: boolean
-  idx?: number
-  itemCount?: number
-  onClick?: () => void
-  selected?: boolean
-}) {
+  className,
+  ...props
+}: WindowLnbMenuItemProps) {
   const inRoot = useContext(WindowLnbMenuContext)
   if (!inRoot) {
     throw new Error('WindowLnbMenu.Item must be used within WindowLnbMenu.Root.')
@@ -69,8 +70,9 @@ function Item({
         'flex items-center px-4 relative cursor-pointer',
         radiusClass,
         selected ? 'bg-white' : 'bg-white/50 hover:bg-white/70',
+        className,
       )}
-      onClick={onClick}
+      {...props}
     >
       <div className={clsx('py-2', !isLast && 'border-b border-gray-300 w-full')}>
         <span className="mr-4 text-md">{icon}</span>

@@ -16,7 +16,7 @@ type SignalLevel = 0 | 1 | 2 | 3 | 4
 
 type SignalColor = '#fff' | '#d1d5db' | '#1a1a1a'
 
-type HeaderNetStatusProps = React.HTMLAttributes<HTMLSpanElement> & {
+interface HeaderNetStatusProps extends React.HTMLAttributes<HTMLSpanElement> {
   menuOpen?: boolean
   setMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>
   anchorEl?: HTMLElement | null
@@ -37,14 +37,14 @@ function getSignalColor(speed: number | null, isMaximized: boolean): SignalColor
   return '#d1d5db' // 회색(느림/끊김)
 }
 
-const HeaderNetStatus: React.FC<HeaderNetStatusProps> = ({
+function HeaderNetStatus({
   className,
   menuOpen: menuOpenProp,
   setMenuOpen: setMenuOpenProp,
   anchorEl: anchorElProp,
   setAnchorEl: setAnchorElProp,
   ...props
-}) => {
+}: HeaderNetStatusProps) {
   const { speed } = useInternetSpeed()
   const isMaximized = useWindowStore((s) => s.isMaximized)
   const { t } = useTranslation()
@@ -69,7 +69,6 @@ const HeaderNetStatus: React.FC<HeaderNetStatusProps> = ({
         aria-label={statusLabel}
         title={statusLabel}
         tabIndex={0}
-        {...props}
         onClick={(e) => {
           setAnchorEl(e.currentTarget)
           setMenuOpen(true)
@@ -80,6 +79,7 @@ const HeaderNetStatus: React.FC<HeaderNetStatusProps> = ({
             setMenuOpen(true)
           }
         }}
+        {...props}
       >
         <HeaderNetSignalIcon level={level} color={color} />
       </span>

@@ -1,11 +1,15 @@
 import clsx from 'clsx'
 
+interface HeaderLangIconProps extends React.HTMLAttributes<HTMLSpanElement> {
+  lang: string
+}
+
 const LANG_ICON: Record<string, string> = {
   ko: '한',
   en: 'A',
 }
 
-export default function HeaderLangIcon({ lang, className }: { lang: string; className?: string }) {
+export default function HeaderLangIcon({ lang, className, ...props }: HeaderLangIconProps) {
   const icon = LANG_ICON[lang] || lang.toUpperCase()
   return (
     <span
@@ -16,6 +20,7 @@ export default function HeaderLangIcon({ lang, className }: { lang: string; clas
       role="img"
       aria-label={lang}
       title={lang}
+      {...props}
     >
       {icon}
     </span>

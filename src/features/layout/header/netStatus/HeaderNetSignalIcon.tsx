@@ -4,13 +4,12 @@ type SignalLevel = 0 | 1 | 2 | 3 | 4
 
 type SignalColor = '#fff' | '#d1d5db' | '#1a1a1a'
 
-type SignalIconProps = {
+interface SignalIconProps extends React.HTMLAttributes<SVGElement> {
   level: SignalLevel
   color: SignalColor
-  className?: string
 }
 
-const HeaderNetSignalIcon: React.FC<SignalIconProps> = ({ level, color, className }) => {
+const HeaderNetSignalIcon: React.FC<SignalIconProps> = ({ level, color, ...props }) => {
   return (
     <svg
       width="21"
@@ -18,7 +17,7 @@ const HeaderNetSignalIcon: React.FC<SignalIconProps> = ({ level, color, classNam
       viewBox="0 0 21 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      {...props}
     >
       <rect x="2" y="13" width="3" height="4" rx="1" fill={level >= 1 ? color : '#d1d5db'} />
       <rect x="7" y="9" width="3" height="8" rx="1" fill={level >= 2 ? color : '#d1d5db'} />

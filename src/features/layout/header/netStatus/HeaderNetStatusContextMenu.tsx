@@ -3,7 +3,7 @@ import ContextMenu from '@/features/commons/ContextMenu'
 import HeaderNetSignalIcon from './HeaderNetSignalIcon'
 import useInternetSpeed from '@/hooks/useInternetSpeed'
 
-interface HeaderNetStatusContextMenuProps {
+interface HeaderNetStatusContextMenuProps extends React.HTMLAttributes<HTMLDivElement> {
   anchorEl: HTMLElement | null
   open: boolean
   onClose: () => void
@@ -13,6 +13,7 @@ export default function HeaderNetStatusContextMenu({
   anchorEl,
   open,
   onClose,
+  ...props
 }: HeaderNetStatusContextMenuProps) {
   const { t } = useTranslation()
   const { speed } = useInternetSpeed()
@@ -23,7 +24,7 @@ export default function HeaderNetStatusContextMenu({
 
   return (
     <ContextMenu open={open} anchor={anchorEl} onClose={onClose}>
-      <div className="flex flex-col items-center min-w-[120px] p-1">
+      <div className="flex flex-col items-center min-w-[120px] p-1" {...props}>
         <HeaderNetSignalIcon
           level={speed === null ? 0 : speed > 50 ? 4 : speed > 10 ? 3 : speed > 2 ? 2 : 1}
           color="#1a1a1a"
