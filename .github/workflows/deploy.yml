@@ -45,10 +45,18 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout dist
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Deploy dist to external repo
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          external_repository: bisu8018/bisu8018.github.io
+          publish_branch: main
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
