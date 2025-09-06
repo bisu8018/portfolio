@@ -18,7 +18,7 @@ export default function Wallpaper() {
     >
       <img
         ref={imgRef}
-        src="/lo_fi_wallpaper.jpg"
+        src="/wallpaper.jpg"
         alt="lofi background"
         className="w-full h-full object-cover object-center opacity-85 block"
         draggable={false}
