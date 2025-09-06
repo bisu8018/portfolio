@@ -49,6 +49,13 @@ jobs:
         with:
           name: dist
 
+      - name: Show dist directory structure
+        run: |
+          echo "==== dist directory tree ===="
+          tree dist || ls -al dist
+          echo "==== workspace root ===="
+          ls -al
+
       - name: Deploy dist to external repo root
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -57,5 +64,6 @@ jobs:
           external_repository: bisu8018/bisu8018.github.io
           publish_branch: main
           force_orphan: true
+          verbose: true
           user_name: github-actions[bot]
           user_email: github-actions[bot]@users.noreply.github.com
