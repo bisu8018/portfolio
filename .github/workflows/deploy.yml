@@ -49,6 +49,11 @@ jobs:
         with:
           name: dist
 
+      - name: Move dist files to ./dist
+        run: |
+          mkdir -p dist
+          mv dist/* dist/ 2>/dev/null || mv * dist/ 2>/dev/null || true
+
       - name: Show dist directory structure
         run: |
           echo "==== dist directory tree ===="
