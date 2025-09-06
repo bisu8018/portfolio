@@ -16,10 +16,10 @@
   "bugs": {
     "url": "https://github.com/bisu8018/dean-huiyongpark.github.io/issues"
   },
-  "homepage": "https://bisu8018.github.io/dean-huiyongpark.github.io/",
+  "homepage": "https://bisu8018.github.io/",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+  "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky install"

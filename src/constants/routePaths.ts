@@ -6,4 +6,4 @@ export const ROUTE_PATHS = {
     CAREER: '/portfolio/career',
     CONTACT: '/portfolio/contact',
   },
-} as const;
+} as const
