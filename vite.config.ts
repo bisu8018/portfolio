@@ -8,6 +8,7 @@ const __dirname = dirname(__filename)
 
 export default defineConfig({
   plugins: [react()],
+  assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg', '**/*.webp'],
   resolve: {
     alias: {
       '@/hooks': resolve(__dirname, 'src/hooks'),

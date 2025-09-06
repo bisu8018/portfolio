@@ -4,10 +4,6 @@
  * @component
  * @returns {JSX.Element} 툴 버튼 영역
  */
-import lnbClose from '@/assets/lnb-close.svg'
-import lnbMinimize from '@/assets/lnb-minimize.svg'
-import lnbMaximize from '@/assets/lnb-maximize.svg'
-import lnbRestoreDown from '@/assets/lnb-restore_down.svg'
 import { useWindowStore } from '@/stores/windowStore'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -35,7 +31,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
         }}
       >
         <img
-          src={lnbClose}
+          src="/lnb-close.svg"
           alt="close"
           className="w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity"
         />
@@ -53,7 +49,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
         aria-disabled={isMaximized}
       >
         <img
-          src={lnbMinimize}
+          src="/lnb-minimize.svg"
           alt="minimize"
           className={
             isMaximized
@@ -70,7 +66,7 @@ export default function CWindowToolBtns({ className, ...props }: CWindowToolBtns
         onClick={() => setMaximized((v) => !v)}
       >
         <img
-          src={isMaximized ? lnbRestoreDown : lnbMaximize}
+          src={isMaximized ? '/lnb-restore_down.svg' : '/lnb-maximize.svg'}
           alt={isMaximized ? 'restore' : 'maximize'}
           className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-opacity"
         />
