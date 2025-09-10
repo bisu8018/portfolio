@@ -6,4 +6,7 @@ export const ROUTE_PATHS = {
     CAREER: '/portfolio/career',
     CONTACT: '/portfolio/contact',
   },
+  GAME: {
+    TEST: '/game/test',
+  },
 } as const

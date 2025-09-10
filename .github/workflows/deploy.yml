@@ -69,6 +69,5 @@ jobs:
           external_repository: bisu8018/bisu8018.github.io
           publish_branch: main
           force_orphan: true
-          verbose: true
           user_name: github-actions[bot]
           user_email: github-actions[bot]@users.noreply.github.com

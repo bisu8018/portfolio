@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import Layout from './features/layout/Layout'
 import HomePage from './pages/HomePage'
@@ -42,10 +42,10 @@ function RouterWrapper() {
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Router basename={import.meta.env.BASE_URL}>
         <MetaTag />
         <RouterWrapper />
-      </BrowserRouter>
+      </Router>
     </HelmetProvider>
   )
 }
