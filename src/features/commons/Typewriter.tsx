@@ -51,7 +51,13 @@ export default function Typewriter({
     (!isDeleting && display.length < texts[index].length) || (isDeleting && display.length > 0)
 
   return (
-    <span className={`inline-block whitespace-nowrap ${className ?? ''}`} {...props}>
+    <span
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      className={`inline-block whitespace-nowrap ${className ?? ''}`}
+      {...props}
+    >
       {chars.map((ch, i) => (
         <motion.span
           key={i}

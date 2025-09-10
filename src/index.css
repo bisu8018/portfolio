@@ -3,5 +3,8 @@
 @layer base {
 	html, body {
 		font-family: 'Pretendard', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+		--color-bg: #ffffff;
+		--color-text: #0f172a; /* slate-900 */
+		--color-accent: #111827; /* darker accent for controls */
 	}
 }

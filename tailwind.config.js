@@ -7,8 +7,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Pretendard', 'Inter', 'ui-sans-serif', 'system-ui'],
+        sans: ['Pretendard','Inter', 'ui-sans-serif', 'system-ui'],
+        heading: ['Poppins', 'Pretendard', 'Inter', 'ui-sans-serif', 'system-ui'],
       },
     },
   },
+  plugins: [
+    function ({ addUtilities, theme }) {
+      const font = theme('fontFamily.heading').join(', ');
+      addUtilities({
+        '.font-heading': {
+          'font-family': font,
+        }
+      });
+    }
+  ]
 }
