@@ -43,6 +43,13 @@
   "profile": {
     "name": "Huiyong Park"
   },
+  "home": {
+    "hero": {
+  "lines": ["Huiyong Park.", "Dean.", "Front-End Developer."],
+  "greeting": "Hi there 👋 I'm",
+  "suffix": ""
+    }
+  },
   "menu": {
     "open": "Open menu",
     "close": "Close menu"

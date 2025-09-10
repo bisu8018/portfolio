@@ -43,6 +43,13 @@
   "profile": {
     "name": "박희용"
   },
+  "home": {
+    "hero": {
+  "lines": ["박희용", "Dean", "프론트엔드 개발자"],
+  "greeting": "안녕하세요! 🤗 저는",
+  "suffix": "입니다."
+    }
+  },
   "menu": {
     "open": "메뉴 열기",
     "close": "메뉴 닫기"
