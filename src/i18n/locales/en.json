@@ -36,6 +36,7 @@
     "maximize": "Maximize",
     "restore": "Restore Down",
     "home": "Home",
+    "portfolio": "Portfolio",
     "about": "About",
     "career": "Career",
     "contact": "Contact"
@@ -45,9 +46,8 @@
   },
   "home": {
     "hero": {
-  "lines": ["Huiyong Park.", "Dean.", "Front-End Developer."],
-  "greeting": "Hi there 👋 I'm",
-  "suffix": ""
+      "lines": ["Huiyong Park", "Dean", "Front-End Developer"],
+      "greeting": "Hi there 👋"
     }
   },
   "menu": {
@@ -85,8 +85,8 @@
     "snow": "Snow",
     "unknown": "Unknown",
     "loading": "Loading...",
-  "seoul": "Seoul",
-  "newyork": "New York",
+    "seoul": "Seoul",
+    "newyork": "New York",
     "high": "High",
     "low": "Low"
   },

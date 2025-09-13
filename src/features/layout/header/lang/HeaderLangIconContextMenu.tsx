@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next'
-
 import ContextMenu from '@/features/commons/ContextMenu'
 import HeaderLangIcon from './HeaderLangIcon'
 
@@ -9,6 +8,11 @@ interface HeaderLangIconContextMenuProps extends React.HTMLAttributes<HTMLDivEle
   onClose: () => void
 }
 
+/**
+ * 헤더 우측 언어 선택 아이콘의 컨텍스트 메뉴
+ * - 한국어, 영어 선택지 제공
+ * - 선택 시 i18n 언어 변경
+ */
 export default function HeaderLangIconContextMenu({
   anchorEl,
   open,

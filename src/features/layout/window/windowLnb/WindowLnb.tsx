@@ -5,17 +5,18 @@
  * @returns {JSX.Element} 내비게이션 바
  */
 import { useLnbDynamicMaxWidth } from '@/hooks/lnb/useLnbDynamicMaxWidth'
+import type { ReactNode } from 'react'
 import { ResizableBox } from 'react-resizable'
 import 'react-resizable/css/styles.css'
 import { useWindowStore } from '@/stores/windowStore'
 import WindowLnbProfile from './WindowLnbProfile'
 import WindowLnbMenu from './WindowLnbMenu'
 
-import { useNavigate } from 'react-router-dom'
-import { ROUTE_PATHS } from '@/constants/routePaths'
+import { useNavigate, useLocation } from 'react-router-dom'
 import WindowLnbFooter from './WindowLnbFooter'
 import { useTranslation } from 'react-i18next'
 import CWindowToolBtns from '@/features/commons/CWindowToolBtns'
+import { getNavigationForPath } from '@/constants/navigation'
 
 export default function WindowLnb() {
   const navigate = useNavigate()
@@ -23,7 +24,8 @@ export default function WindowLnb() {
   const [maxWidth] = useLnbDynamicMaxWidth(466)
   const { t } = useTranslation()
 
-  const currentPath = window.location.pathname
+  const location = useLocation()
+  const currentPath = location.pathname
 
   return (
     <ResizableBox
@@ -45,39 +47,31 @@ export default function WindowLnb() {
         {!isMaximized && <CWindowToolBtns className="left-6 top-6" />}
         <WindowLnbProfile />
 
-        <WindowLnbMenu.Root className="mt-4">
-          <WindowLnbMenu.Item
-            icon={<span className="">🏠</span>}
-            onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.MAIN_PAGE)}
-            selected={currentPath === ROUTE_PATHS.PORTFOLIO.MAIN_PAGE}
-          >
-            {t('lnb.home', '홈')}
-          </WindowLnbMenu.Item>
-        </WindowLnbMenu.Root>
+        {getNavigationForPath(currentPath).map((section, si) => (
+          <WindowLnbMenu.Root key={si} className={si === 0 ? 'mt-4' : 'mt-2'}>
+            {section.items.map((it) => {
+              let labelText: ReactNode = ''
 
-        <WindowLnbMenu.Root className="mt-2">
-          <WindowLnbMenu.Item
-            icon={<span className="">👤</span>}
-            onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.ABOUT)}
-            selected={currentPath === ROUTE_PATHS.PORTFOLIO.ABOUT}
-          >
-            {t('lnb.about', '소개')}
-          </WindowLnbMenu.Item>
-          <WindowLnbMenu.Item
-            icon={<span className="">💼</span>}
-            onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.CAREER)}
-            selected={currentPath === ROUTE_PATHS.PORTFOLIO.CAREER}
-          >
-            {t('lnb.career', '경력')}
-          </WindowLnbMenu.Item>
-          <WindowLnbMenu.Item
-            icon={<span className="">✉️</span>}
-            onClick={() => navigate(ROUTE_PATHS.PORTFOLIO.CONTACT)}
-            selected={currentPath === ROUTE_PATHS.PORTFOLIO.CONTACT}
-          >
-            {t('lnb.contact', '연락처')}
-          </WindowLnbMenu.Item>
-        </WindowLnbMenu.Root>
+              if (typeof it.label === 'object' && it.label !== null && 'id' in it.label) {
+                const { id, default: def } = it.label as { id: string; default: string }
+                labelText = t(id, def)
+              } else if (typeof it.label === 'string') {
+                labelText = it.label
+              }
+
+              return (
+                <WindowLnbMenu.Item
+                  key={it.key}
+                  icon={<span>{it.icon}</span>}
+                  onClick={() => navigate(it.path)}
+                  selected={currentPath === it.path}
+                >
+                  {labelText}
+                </WindowLnbMenu.Item>
+              )
+            })}
+          </WindowLnbMenu.Root>
+        ))}
 
         <WindowLnbFooter />
       </aside>

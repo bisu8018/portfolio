@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
 import './i18n'
+import { URLS } from './constants/urls'
 
 // 개발자 콘솔용 이력/소개 메시지 (다크/라이트 테마 대응)
 if (typeof window !== 'undefined' && window.console) {
@@ -18,14 +19,10 @@ if (typeof window !== 'undefined' && window.console) {
     '%cFrontend Engineer | React, TypeScript, Vite, Zustand, TanStack Query, TailwindCSS',
     stackStyle,
   )
-  console.log('%cEmail: %cdean.huiyongPark@gmail.com', infoStyle, linkStyle)
-  console.log('%cGitHub: %chttps://github.com/bisu8018', infoStyle, linkStyle)
-  console.log(
-    '%cPortfolio: %chttps://bisu8018.github.io/dean-huiyongpark.github.io/',
-    infoStyle,
-    linkStyle,
-  )
-  console.log('%cBlog: %chttps://velog.io/@bisu8018/posts', infoStyle, linkStyle)
+  console.log('%cEmail: %c' + URLS.EMAIL, infoStyle, linkStyle)
+  console.log('%cGitHub: %c' + URLS.GITHUB, infoStyle, linkStyle)
+  console.log('%cPortfolio: %c' + URLS.PORTFOLIO, infoStyle, linkStyle)
+  console.log('%cBlog: %c' + URLS.BLOG, infoStyle, linkStyle)
   console.log(
     '%c\nIf you are reading this, feel free to contact me for collaboration, job offers, or just to say hi!\n',
     infoStyle,

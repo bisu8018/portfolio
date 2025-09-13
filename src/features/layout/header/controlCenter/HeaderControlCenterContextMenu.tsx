@@ -1,6 +1,6 @@
 import ContextMenu from '@/features/commons/ContextMenu'
 import HeaderControlCenterParallaxToggleBtn from './HeaderControlCenterParallaxToggleBtn'
-import HeaderControlRainToggleBtn from './HeaderControlRainToggleBtn'
+import HeaderControlCenterRainToggleBtn from './HeaderControlCenterRainToggleBtn'
 import { useTranslation } from 'react-i18next'
 
 interface HeaderControlCenterContextMenuProps {
@@ -16,18 +16,19 @@ export default function HeaderControlCenterContextMenu({
   anchorEl,
   open,
   onClose,
+  ...props
 }: HeaderControlCenterContextMenuProps) {
   const { t } = useTranslation()
   return (
     <ContextMenu open={open} anchor={anchorEl} onClose={onClose}>
-      <div className="flex flex-col gap-y-3 p-2">
+      <div className="flex flex-col gap-y-3 p-2" {...props}>
         <div className="flex items-center gap-x-3 text-sm">
           <HeaderControlCenterParallaxToggleBtn />
           <div>{t('header.parallax')}</div>
         </div>
 
         <div className="flex items-center gap-x-3 text-sm">
-          <HeaderControlRainToggleBtn />
+          <HeaderControlCenterRainToggleBtn />
           <div>{t('header.rain')}</div>
         </div>
       </div>

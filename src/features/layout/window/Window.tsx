@@ -15,6 +15,7 @@ import useForceMaximizeOnMobile from '@/hooks/useForceMaximizeOnMobile'
 import useDetectMobile from '@/hooks/useDetectMobile'
 import useMainDynamicMaxWidth from '@/hooks/useMainDynamicMaxWidth'
 import MobileMenu from './MobileMenu'
+import WindowRoutePath from './WindowRoutePath'
 
 export default function Window() {
   useForceMaximizeOnMobile()
@@ -51,6 +52,7 @@ export default function Window() {
         {isMobile ? <MobileMenu /> : <WindowLnb />}
 
         <div className="flex-1 min-w-0 p-10">
+          <WindowRoutePath />
           <Outlet />
         </div>
       </div>

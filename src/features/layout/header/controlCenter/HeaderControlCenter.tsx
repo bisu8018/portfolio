@@ -7,14 +7,24 @@ import HeaderControlCenterContextMenu from './HeaderControlCenterContextMenu'
  */
 export default function HeaderControlCenter({
   className = '',
+  menuOpen,
+  setMenuOpen,
   ...props
-}: React.HTMLAttributes<HTMLSpanElement>) {
+}: React.HTMLAttributes<HTMLSpanElement> & {
+  menuOpen?: boolean
+  setMenuOpen?: (v: boolean) => void
+}) {
   const ref = useRef<HTMLSpanElement>(null)
   const [open, setOpen] = useState(false)
+  const isOpen = typeof menuOpen === 'boolean' ? menuOpen : open
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault()
-    setOpen((prev) => !prev)
+    setOpen((prev) => {
+      const next = !prev
+      if (typeof setMenuOpen === 'function') setMenuOpen(next)
+      return next
+    })
   }
 
   return (
@@ -24,8 +34,11 @@ export default function HeaderControlCenter({
       </span>
       <HeaderControlCenterContextMenu
         anchorEl={ref.current}
-        open={open}
-        onClose={() => setOpen(false)}
+        open={isOpen}
+        onClose={() => {
+          setOpen(false)
+          if (typeof setMenuOpen === 'function') setMenuOpen(false)
+        }}
       />
     </>
   )

@@ -9,19 +9,26 @@ import { useClock } from '@/hooks/useClock'
 import { useWindowStore } from '@/stores/windowStore'
 import { useRnbStore } from '@/stores/rnbStore'
 
-type HeaderTimeProps = React.HTMLAttributes<HTMLTimeElement>
+type HeaderTimeProps = Omit<React.HTMLAttributes<HTMLTimeElement>, 'menuOpen' | 'setMenuOpen'>
 
-export default function HeaderTime({ className, ...props }: HeaderTimeProps) {
+export default function HeaderTime({
+  className,
+  menuOpen: _menuOpen,
+  setMenuOpen: _setMenuOpen,
+  ...props
+}: HeaderTimeProps & { menuOpen?: unknown; setMenuOpen?: unknown }) {
   const { now, formatDate } = useClock()
   const setOpen = useRnbStore((s) => s.setOpen)
   const open = useRnbStore((s) => s.open)
   const isMaximized = useWindowStore((s) => s.isMaximized)
-
   const timeString = formatDate(now)
 
   const onClick = () => {
     setOpen(!open)
   }
+
+  void _menuOpen
+  void _setMenuOpen
 
   return (
     <time
