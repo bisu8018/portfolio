@@ -1,4 +1,3 @@
-
 /**
  * anchor HTMLElement의 기준 위치(팝오버, 메뉴 등)를 계산하는 커스텀 훅
  * @param anchor 기준이 되는 HTMLElement (null 가능)
@@ -16,13 +15,24 @@ export function useAnchorPosition(anchor: HTMLElement | null) {
       setRect(null)
       return
     }
-    // 언어 변경 시 DOM 업데이트 후 위치 계산을 위해 약간의 딜레이
+
     const updateRect = () => setRect(anchor.getBoundingClientRect())
+
     updateRect()
+
     const handleLang = () => setTimeout(updateRect, 30)
     i18n.on('languageChanged', handleLang)
+
+    const handleResize = () => {
+      window.requestAnimationFrame(() => updateRect())
+    }
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('orientationchange', handleResize)
+
     return () => {
       i18n.off('languageChanged', handleLang)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('orientationchange', handleResize)
     }
   }, [anchor, i18n])
 

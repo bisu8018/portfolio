@@ -48,6 +48,12 @@
     "hero": {
       "lines": ["Huiyong Park", "Dean", "Front-End Developer"],
       "greeting": "Hi there 👋"
+    },
+    "description": {
+      "p1": "I value designing user touchpoints, capturing brand sensibility, and carefully implementing the intent of planning as a <strong>Front-End Developer</strong>.",
+      "p2": "I am not afraid of new challenges and enjoy adapting quickly and growing in changing environments.",
+      "p3": "With my experience and passion, I want to grow with great colleagues and build a better future.",
+      "p4": "Feel free to contact me anytime! 😊"
     }
   },
   "menu": {

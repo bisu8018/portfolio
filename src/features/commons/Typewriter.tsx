@@ -1,13 +1,19 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 interface TypewriterProps extends React.HTMLProps<HTMLSpanElement> {
   texts: string[]
-  typingSpeed?: number // ms per char
-  deletingSpeed?: number // ms per char
-  pause?: number // ms to wait after full text
+  typingSpeed?: number
+  deletingSpeed?: number
+  pause?: number
 }
 
+/**
+ * Typewriter effect for text animation
+ * @param param0 - Props for the Typewriter component
+ * @returns Typewriter component
+ */
 export default function Typewriter({
   texts,
   typingSpeed = 200,
@@ -19,6 +25,13 @@ export default function Typewriter({
   const [index, setIndex] = React.useState(0)
   const [display, setDisplay] = React.useState('')
   const [isDeleting, setIsDeleting] = React.useState(false)
+  const { i18n } = useTranslation()
+
+  React.useEffect(() => {
+    setIndex(0)
+    setDisplay('')
+    setIsDeleting(false)
+  }, [i18n.language])
 
   React.useEffect(() => {
     let timeout: number

@@ -51,7 +51,7 @@ export default function Window() {
         <WindowNoeulGradient />
         {isMobile ? <MobileMenu /> : <WindowLnb />}
 
-        <div className="flex-1 min-w-0 p-10">
+        <div className="flex-1 min-w-0 p-6 md:p-8 lg:p-10">
           <WindowRoutePath />
           <Outlet />
         </div>
