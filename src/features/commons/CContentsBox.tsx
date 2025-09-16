@@ -10,25 +10,26 @@ export type CContentsBoxProps = React.HTMLAttributes<HTMLDivElement>
  * @param {CContentsBoxProps} props - 컴포넌트 속성
  * @returns {JSX.Element} 콘텐츠 박스
  */
-export default function CContentsBox({ children, className, style, ...props }: CContentsBoxProps) {
-  const classes = clsx(
-    'bg-white',
-    'flex',
-    'flex-col',
-    'overflow-hidden',
-    'p-6',
-    'relative',
-    'transition-all',
-    'duration-300',
-    'ease-[cubic-bezier(0,0,.5,1)]',
-    'whitespace-normal',
-    'rounded-lg',
-    className,
-  )
-
+export default function CContentsBox({ children, className, ...props }: CContentsBoxProps) {
   return (
-    <div className={classes} style={style} {...props}>
-      {children}
+    <div
+      className={clsx(
+        'bg-white',
+        'flex',
+        'flex-col',
+        'overflow-hidden',
+        'p-6',
+        'relative',
+        'transition-all',
+        'duration-300',
+        'ease-[cubic-bezier(0,0,.5,1)]',
+        'whitespace-normal',
+        'rounded-lg',
+        className,
+      )}
+      {...props}
+    >
+      <div className="overflow-y-auto">{children}</div>
     </div>
   )
 }
