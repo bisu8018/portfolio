@@ -9,7 +9,6 @@
 	}
 }
 
-/* Minimal, Apple-like scrollbar styles */
 :root {
 	--scrollbar-bg: rgba(15, 23, 42, 0.04); /* very light track */
 	--scrollbar-thumb: rgba(15, 23, 42, 0.12);
@@ -17,7 +16,6 @@
 	--scrollbar-size: 8px;
 }
 
-/* WebKit browsers */
 *::-webkit-scrollbar {
 	width: var(--scrollbar-size);
 	height: var(--scrollbar-size);
@@ -41,34 +39,15 @@
 	scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
-/* Utility for clipped rounded corners when overflow visible is required */
 .clip-rounded {
 	-webkit-clip-path: inset(0 round 12px);
 	clip-path: inset(0 round 12px);
 }
 
-/* Smooth scrolling for the app */
 html:focus-within {
 	scroll-behavior: smooth;
 }
 
-/* Copperplate Gothic: not a default web-safe font.
-	 To use it, either:
-	 1) Self-host a Copperplate-like webfont and include it via @font-face, or
-	 2) Use a similar open font (e.g., 'Cormorant Garamond' or 'Playfair Display') from Google Fonts,
-			or provide a local fallback on macOS like '-apple-system' variants.
-
-	 Example @font-face (if you provide the font files under /public/fonts):
-	 @font-face {
-		 font-family: 'CopperplateGothicLocal';
-		 src: url('/fonts/CopperplateGothic.woff2') format('woff2');
-		 font-weight: 400 700;
-		 font-style: normal;
-		 font-display: swap;
-	 }
-
-	 Utility class to apply the Copperplate-like family.
-*/
 .font-copperplate {
 	font-family: 'CopperplateGothicLocal', 'Copperplate', 'Copperplate Gothic', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
 }

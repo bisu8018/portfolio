@@ -99,5 +99,18 @@
   "header": {
     "parallax": "Parallax Effect",
     "rain": "Rain Effect"
+  },
+  "about": {
+    "techStack": "Tech Stack",
+    "frontendFocus": "Frontend-focused"
+  },
+  "techGroups": {
+    "Languages": "Languages",
+    "CSR Frameworks": "CSR Frameworks",
+    "SSR Frameworks": "SSR Frameworks",
+    "Styling Frameworks / Libraries": "Styling Frameworks / Libraries",
+    "Build & Bundlers": "Build & Bundlers",
+    "Server & API": "Server & API",
+    "DevOps": "DevOps"
   }
 }

@@ -10,11 +10,17 @@ export type CContentsBoxProps = React.HTMLAttributes<HTMLDivElement>
  * @param {CContentsBoxProps} props - 컴포넌트 속성
  * @returns {JSX.Element} 콘텐츠 박스
  */
-export default function CContentsBox({ children, className, ...props }: CContentsBoxProps) {
+export default function CContentsBox({ children, className, style, ...props }: CContentsBoxProps) {
+  const mergedStyle: React.CSSProperties = {
+    background:
+      'linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 100%)',
+    ...style,
+  }
+
   return (
     <div
       className={clsx(
-        'bg-white',
+        'bg-gradient-to-tr from-white to-transparent',
         'flex',
         'flex-col',
         'overflow-hidden',
@@ -27,6 +33,7 @@ export default function CContentsBox({ children, className, ...props }: CContent
         'rounded-lg',
         className,
       )}
+      style={mergedStyle}
       {...props}
     >
       <div className="overflow-y-auto">{children}</div>
