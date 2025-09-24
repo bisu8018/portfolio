@@ -43,7 +43,7 @@ export default function WindowLnb() {
       resizeHandles={['e']}
       handleSize={[16, 9999]}
     >
-      <aside className="h-full min-h-[100%] pt-15 pb-6 px-5 flex flex-col items-center bg-[rgba(255,255,255,0.18)] [backdrop-filter:blur(16px)_saturate(180%)] relative border-r border-gray-200">
+      <aside className="h-full min-h-[100%] pt-15 pb-6 px-5 flex flex-col items-center bg-[rgba(255,255,255,0.6)] [backdrop-filter:blur(16px)_saturate(180%)] relative border-r border-gray-200">
         {!isMaximized && <CWindowToolBtns className="left-6 top-6" />}
         <WindowLnbProfile />
 

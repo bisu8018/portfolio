@@ -37,8 +37,7 @@ export default function Window() {
       <div
         id="main-layout"
         className={[
-          'relative flex overflow-hidden bg-[rgba(255,255,255,0.25)]',
-          '[backdrop-filter:saturate(180%)]',
+          'relative flex overflow-hidden',
           isMaximized
             ? 'w-full h-full max-size-none rounded-none'
             : 'w-full max-h-[720px] h-full rounded-2xl',
@@ -51,7 +50,7 @@ export default function Window() {
         <WindowNoeulGradient />
         {isMobile ? <MobileMenu /> : <WindowLnb />}
 
-        <div className="flex-1 min-w-0 p-6 md:p-8 lg:p-10">
+        <div className="flex-1 min-w-0 p-6 md:p-8 lg:p-10 bg-white">
           <WindowRoutePath />
           <Outlet />
         </div>

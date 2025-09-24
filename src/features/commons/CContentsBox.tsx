@@ -20,7 +20,7 @@ export default function CContentsBox({ children, className, style, ...props }: C
   return (
     <div
       className={clsx(
-        'bg-gradient-to-tr from-white to-transparent',
+        'bg-gradient-to-tr from-white to-transparent overflow-y-auto overflow-x-hidden',
         'flex',
         'flex-col',
         'overflow-hidden',
@@ -36,7 +36,7 @@ export default function CContentsBox({ children, className, style, ...props }: C
       style={mergedStyle}
       {...props}
     >
-      <div className="overflow-y-auto">{children}</div>
+      {children}
     </div>
   )
 }
