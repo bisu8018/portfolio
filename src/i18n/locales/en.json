@@ -112,5 +112,93 @@
     "Build & Bundlers": "Build & Bundlers",
     "Server & API": "Server & API",
     "DevOps": "DevOps"
+  },
+  "careerPage": {
+    "title": "Career",
+    "subtitle": "Key Roles and Achievements Summary",
+    "techStack": "Tech Stack",
+    "experiences": {
+      "nexon": {
+        "company": "NEXON KOREA",
+        "role": "Frontend Engineer",
+        "period": "Feb 2021 - Present",
+        "duration": "4 years 8 months",
+        "location": "Seongnam, South Korea · On-site",
+        "highlights": [
+          "Game Launcher WebApp | Remote Play WebApp | Personalized Ad Web/SDK | Official Web (Portal, Customer Info, Game Web Launch SDK, etc.) | WebSocket Streaming SDK | Unified Payment SDK | Unified Auth SDK | Multiple Console Webs",
+          "Modernized legacy systems using the latest frameworks, improving performance and maintainability",
+          "Developed various SDK clients and solution management tools to enhance internal operational efficiency",
+          "Enhanced user experience by implementing multi-language (i18n) features and responsive UI/UX for global users",
+          "Contributed to API design, system architecture improvements, and performance optimization for high-traffic web services",
+          "Built test environments based on Playwright and Storybook, and established Git hook-based CI/CD pipelines to ensure deployment stability",
+          "Collaborated with various teams including planning, design, QA, and global development teams to deliver high-quality features reliably",
+          "Led SDK structure refactoring and modularization efforts to reduce technical debt and improve reusability"
+        ]
+      },
+      "polaris": {
+        "company": "Polaris Office",
+        "role": "Frontend Engineer",
+        "period": "Feb 2019 - Nov 2020",
+        "duration": "1 year 10 months",
+        "location": "Seoul, South Korea",
+        "highlights": [
+          "Polaris Share, a document sharing platform under the Polaris Office umbrella brand",
+          "ES6 ~ Lodash, Modern JavaScript, Functional Programming",
+          "Built responsive CSR/SSR SPA using React.js + Express and Next.js",
+          "GraphQL ~ Apollo Client",
+          "Webpack project design and implementation",
+          "TDD (Jest, Enzyme)",
+          "SEO (Google), Open Graph, oEmbed",
+          "Client profiling and performance tuning",
+          "Applied Node.js, AWS (EC2, ECS, EKS, Lambda, blue/green deployment, etc.), Docker + Kubernetes",
+          "Responsible for Polaris Office ~ Polaris Share webview SDK integration and client development"
+        ]
+      },
+      "jakin": {
+        "company": "Jakin",
+        "role": "Frontend Engineer",
+        "period": "May 2018 - Oct 2018",
+        "duration": "6 months",
+        "location": "Seongnam, South Korea · On-site",
+        "highlights": [
+          "P2P cryptocurrency exchange construction project",
+          "Built responsive SPA based on Vue.js",
+          "Webpack build system construction and maintenance",
+          "Backend API-based test code writing",
+          "Frontend performance tuning",
+          "Frontend technical documentation",
+          "CSS and design library standardization"
+        ]
+      },
+      "inca": {
+        "company": "INCA Internet",
+        "role": "Engineer",
+        "period": "Mar 2017 - Apr 2018",
+        "duration": "1 year 2 months",
+        "location": "Seoul, South Korea",
+        "highlights": [
+          "nProtect Web SDK construction, operation management, and maintenance",
+          "Maintained P2P encryption module operating in browser, mobile, and OS environments to ensure secure data transmission",
+          "Enhanced user input security through keyboard security module (client and client-server communication) maintenance",
+          "Stabilized nProtect client communication endpoint SDK and supported platform integration",
+          "Performed technical consulting and customer support for B2B security system construction and operation",
+          "Conducted POC for new security solution companies and managed server/client solution deployment and operation"
+        ]
+      },
+      "myems": {
+        "company": "MYEMS",
+        "role": "Backend Engineer",
+        "period": "Apr 2016 - Feb 2017",
+        "duration": "11 months",
+        "location": "Seoul, South Korea · Remote",
+        "highlights": [
+          "Designed and built B2B Admin EMS web platform",
+          "PHP-based backend API development and service operation, database integration (Oracle / MySQL)",
+          "Developed frontend pages using JavaScript / jQuery for administrative UI",
+          "Collaborated with external partners such as Korea Post and Lotte Global Logistics to develop server data integration and settlement processes",
+          "Participated in Android-based business app maintenance (courier service support)"
+        ]
+      }
+    }
   }
 }
