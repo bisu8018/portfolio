@@ -32,8 +32,10 @@ export default function HomePage() {
 
         <div className="mt-3 text-sm">{t('home.description.p4')}</div>
 
-        <div className="flex justify-center">
-          <BlackHole className="opacity-80" />
+        <div className="flex justify-center items-center flex-1 min-h-0 w-full">
+          <div className="w-full max-w-md aspect-square">
+            <BlackHole className="opacity-80" />
+          </div>
         </div>
       </main>
     </CContentsBox>

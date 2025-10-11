@@ -104,6 +104,10 @@ export default function BlackHole({
     controls.minPolarAngle = Math.PI * 0.2
     controls.target.set(0, 0, 0) // Focus on black hole center
 
+    // Store geometries and materials for cleanup
+    const geometries: THREE.BufferGeometry[] = []
+    const materials: THREE.Material[] = []
+
     // Black hole center (event horizon) - Enhanced with glowing effect
     const blackHoleGeometry = new THREE.SphereGeometry(0.3, 64, 64) // Higher resolution
     const blackHoleMaterial = new THREE.MeshBasicMaterial({
@@ -111,6 +115,8 @@ export default function BlackHole({
       transparent: true,
       opacity: 0.95,
     })
+    geometries.push(blackHoleGeometry)
+    materials.push(blackHoleMaterial)
     const blackHole = new THREE.Mesh(blackHoleGeometry, blackHoleMaterial)
     scene.add(blackHole)
 
@@ -122,6 +128,8 @@ export default function BlackHole({
       opacity: 0.3,
       side: THREE.BackSide,
     })
+    geometries.push(haloGeometry)
+    materials.push(haloMaterial)
     const halo = new THREE.Mesh(haloGeometry, haloMaterial)
     scene.add(halo)
 
@@ -134,6 +142,8 @@ export default function BlackHole({
       side: THREE.DoubleSide,
       blending: THREE.AdditiveBlending,
     })
+    geometries.push(innerGlowGeometry)
+    materials.push(innerGlowMaterial)
     const innerGlow = new THREE.Mesh(innerGlowGeometry, innerGlowMaterial)
     innerGlow.rotation.x = Math.PI / 2
     scene.add(innerGlow)
@@ -181,6 +191,8 @@ export default function BlackHole({
       blending: THREE.NormalBlending, // Change from additive to normal for better contrast
       sizeAttenuation: true,
     })
+    geometries.push(lightParticles)
+    materials.push(lightParticleMaterial)
 
     const lightParticleSystem = new THREE.Points(lightParticles, lightParticleMaterial)
     scene.add(lightParticleSystem)
@@ -221,6 +233,8 @@ export default function BlackHole({
       opacity: 1.0, // Full opacity for better contrast
       blending: THREE.NormalBlending, // Change from additive to normal for better contrast
     })
+    geometries.push(orbitalParticles)
+    materials.push(orbitalParticleMaterial)
 
     const orbitalParticleSystem = new THREE.Points(orbitalParticles, orbitalParticleMaterial)
     scene.add(orbitalParticleSystem)
@@ -248,12 +262,36 @@ export default function BlackHole({
 
     // Cleanup
     return () => {
-      if (animationIdRef.current) {
+      // Cancel animation frame
+      if (animationIdRef.current !== null) {
         cancelAnimationFrame(animationIdRef.current)
+        animationIdRef.current = null
       }
-      if (mountElement && renderer.domElement) {
+
+      // Dispose controls
+      controls.dispose()
+
+      // Dispose all geometries
+      geometries.forEach((geometry) => {
+        geometry.dispose()
+      })
+
+      // Dispose all materials
+      materials.forEach((material) => {
+        material.dispose()
+      })
+
+      // Clear scene
+      while (scene.children.length > 0) {
+        scene.remove(scene.children[0])
+      }
+
+      // Remove renderer DOM element
+      if (mountElement && renderer.domElement && mountElement.contains(renderer.domElement)) {
         mountElement.removeChild(renderer.domElement)
       }
+
+      // Dispose renderer
       renderer.dispose()
     }
   }, []) // Scene initialization only once
