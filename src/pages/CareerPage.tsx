@@ -102,54 +102,54 @@ const EXPERIENCES = [
 
 export default function CareerPage() {
   return (
-    <CContentsBox className="h-[calc(100%-32px)] p-8">
-      <main className="text-white/90 antialiased space-y-8">
-        <header className="text-center">
-          <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-white leading-tight">
-            경력
-          </h1>
-          <p className="mt-3 text-base text-white/70 font-light leading-relaxed">
-            주요 직무 및 성과 요약
-          </p>
+    <CContentsBox className="h-[calc(100%-32px)]">
+      <main className="antialiased space-y-8 max-w-5xl mx-auto">
+        <header className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-slate-900">경력</h1>
+            <p className="text-sm text-neutral-600 mt-1">주요 직무 및 성과 요약</p>
+          </div>
         </header>
 
-        <section className="space-y-6">
+        <section className="space-y-8">
           {EXPERIENCES.map((exp) => {
             const id = `career-${exp.company.replace(/\s+/g, '')}`
             return (
               <article
                 key={id}
                 id={id}
-                className="group bg-white/10 backdrop-blur-2xl rounded-2xl p-6 transition-all duration-500 hover:bg-white/15 hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-1 focus-within:bg-white/15 focus-within:shadow-2xl focus-within:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent border border-white/20"
+                className="group bg-white/80 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:bg-white/90 border border-slate-200/80"
                 tabIndex={0}
                 aria-labelledby={`${id}-title`}
               >
-                <div className="flex items-start gap-6">
+                <div className="flex items-start gap-4 sm:gap-6">
                   <div
-                    className="flex-shrink-0 w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-lg font-semibold text-white shadow-lg border border-white/30"
-                    aria-hidden
+                    className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-base sm:text-lg font-bold text-white shadow-md"
+                    aria-hidden="true"
                   >
                     {exp.company.split(' ')[0].slice(0, 2)}
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
                       <div className="space-y-1">
                         <h3
                           id={`${id}-title`}
-                          className="text-lg sm:text-xl font-medium text-white tracking-tight leading-tight"
+                          className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-tight"
                         >
                           {exp.company}
                         </h3>
-                        <p className="text-sm text-white/80 font-light leading-relaxed">
+                        <p className="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
                           {exp.role} · {exp.duration}
                         </p>
-                        <p className="text-xs text-white/60 font-light">{exp.location}</p>
+                        <p className="text-xs sm:text-sm text-slate-500 font-normal">
+                          {exp.location}
+                        </p>
                       </div>
 
                       <time
                         dateTime={exp.period}
-                        className="text-xs text-white/70 font-medium bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/20"
+                        className="text-xs sm:text-sm text-slate-700 font-semibold bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 whitespace-nowrap"
                       >
                         {exp.period}
                       </time>
@@ -160,14 +160,14 @@ export default function CareerPage() {
                         index === 0 ? (
                           <div
                             key={h}
-                            className="text-sm font-medium text-white bg-white/15 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/30 shadow-sm"
+                            className="text-sm sm:text-base font-semibold text-slate-800 bg-gradient-to-r from-purple-50 to-indigo-50 px-4 py-3 rounded-lg border border-purple-200/50 shadow-sm"
                           >
                             {h}
                           </div>
                         ) : (
                           <div
                             key={h}
-                            className="text-sm text-white/80 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-white/50 before:font-bold before:text-sm"
+                            className="text-sm sm:text-base text-slate-700 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-purple-500 before:font-bold before:text-base"
                           >
                             {h}
                           </div>
@@ -179,9 +179,9 @@ export default function CareerPage() {
                       {exp.tech.map((t) => (
                         <span
                           key={t}
-                          className="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-white/10 backdrop-blur-sm text-white/90 rounded-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 border border-white/20"
+                          className="inline-flex items-center px-3 py-1.5 text-xs sm:text-sm font-medium bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 hover:scale-105 transition-all duration-200 border border-slate-200"
                           title={t}
-                          aria-hidden
+                          aria-label={`기술 스택: ${t}`}
                         >
                           {t}
                         </span>
