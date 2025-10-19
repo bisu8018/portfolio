@@ -4,9 +4,9 @@
       "title": "Home - Dean",
       "description": "✨ This is the portfolio of frontend developer Huiyong Park, who creates projects with the latest trends and sensibility. 🚀"
     },
-    "about": {
-      "title": "About - Dean",
-      "description": "🙋‍♂️ Introduction, growth story, and development philosophy of Huiyong Park."
+    "skills": {
+      "title": "Skills - Dean",
+      "description": "🛠️ Technical skills and expertise of Huiyong Park."
     },
     "career": {
       "title": "Career - Dean",
@@ -37,7 +37,7 @@
     "restore": "Restore Down",
     "home": "Home",
     "portfolio": "Portfolio",
-    "about": "About",
+    "skills": "Skills",
     "career": "Career",
     "contact": "Contact"
   },
@@ -100,23 +100,20 @@
     "parallax": "Parallax Effect",
     "rain": "Rain Effect"
   },
-  "about": {
-    "techStack": "Tech Stack",
-    "frontendFocus": "Frontend-focused"
-  },
   "techGroups": {
     "Languages": "Languages",
-    "CSR Frameworks": "CSR Frameworks",
-    "SSR Frameworks": "SSR Frameworks",
-    "Styling Frameworks / Libraries": "Styling Frameworks / Libraries",
-    "Build & Bundlers": "Build & Bundlers",
-    "Server & API": "Server & API",
-    "DevOps": "DevOps"
+    "Frontend Frameworks": "Frontend Frameworks",
+    "Styling": "Styling",
+    "Build Tools": "Build Tools",
+    "Backend & Infrastructure": "Backend & Infrastructure",
+    "State Management": "State Management",
+    "API & Data": "API & Data",
+    "Testing": "Testing",
+    "Tools & Others": "Tools & Others"
   },
   "careerPage": {
     "title": "Career",
     "subtitle": "Key Roles and Achievements Summary",
-    "techStack": "Tech Stack",
     "experiences": {
       "nexon": {
         "company": "NEXON KOREA",

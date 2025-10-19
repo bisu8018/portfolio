@@ -2,7 +2,7 @@ export const ROUTE_PATHS = {
   ROOT: '/',
   PORTFOLIO: {
     MAIN_PAGE: '/portfolio/main',
-    ABOUT: '/portfolio/about',
+    SKILLS: '/portfolio/skills',
     CAREER: '/portfolio/career',
     CONTACT: '/portfolio/contact',
   },

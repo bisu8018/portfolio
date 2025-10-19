@@ -44,13 +44,13 @@ export default function Window() {
         ].join(' ')}
         style={{
           ...(!isMaximized ? { maxWidth: dynamicMaxWidth } : {}),
-          backdropFilter: `blur(${blur}px) saturate(180%)`,
+          backdropFilter: `blur(${blur}px)`,
         }}
       >
         <WindowNoeulGradient />
         {isMobile ? <MobileMenu /> : <WindowLnb />}
 
-        <div className="flex-1 min-w-0 p-6 md:p-8 lg:p-10 bg-white">
+        <div className="flex-1 min-w-0 p-6 md:p-8 lg:p-10">
           <WindowRoutePath />
           <Outlet />
         </div>

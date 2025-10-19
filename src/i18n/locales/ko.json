@@ -4,9 +4,9 @@
       "title": "Home - Dean",
       "description": "✨ 최신 트렌드와 감성을 담은 프로젝트를 개발하는 프론트엔드 개발자 박희용(Dean)의 포트폴리오 입니다. 🚀"
     },
-    "about": {
-      "title": "About - Dean",
-      "description": "🙋‍♂️ 박희용(Dean)의 자기소개, 성장 과정, 개발 철학 등 인적 정보를 확인할 수 있습니다."
+    "skills": {
+      "title": "Skills - Dean",
+      "description": "🛠️ 박희용(Dean)이 보유한 기술 스택과 전문 분야를 확인할 수 있습니다."
     },
     "career": {
       "title": "Career - Dean",
@@ -37,7 +37,7 @@
     "restore": "이전 크기로",
     "home": "홈",
     "portfolio": "포트폴리오",
-    "about": "소개",
+    "skills": "기술 스택",
     "career": "경력",
     "contact": "연락처"
   },
@@ -100,23 +100,20 @@
     "parallax": "패럴랙스 효과",
     "rain": "비 효과"
   },
-  "about": {
-    "techStack": "기술 스택",
-    "frontendFocus": "프론트엔드 위주"
-  },
   "techGroups": {
     "Languages": "언어",
-    "CSR Frameworks": "CSR 프레임워크",
-    "SSR Frameworks": "SSR 프레임워크",
-    "Styling Frameworks / Libraries": "스타일링 프레임워크/라이브러리",
-    "Build & Bundlers": "빌드 & 번들러",
-    "Server & API": "서버 & API",
-    "DevOps": "DevOps"
+    "Frontend Frameworks": "프론트엔드 프레임워크",
+    "Styling": "스타일링",
+    "Build Tools": "빌드 도구",
+    "Backend & Infrastructure": "백엔드 & 인프라",
+    "State Management": "상태 관리",
+    "API & Data": "API & 데이터",
+    "Testing": "테스팅",
+    "Tools & Others": "도구 & 기타"
   },
   "careerPage": {
     "title": "경력",
     "subtitle": "주요 직무 및 성과 요약",
-    "techStack": "기술 스택",
     "experiences": {
       "nexon": {
         "company": "NEXON KOREA",

@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getBreadcrumbsFromPath } from '@/constants/navigation'
+import GlassLayeredBox from '@/features/commons/GlassLayeredBox'
 
 export default function WindowRoutePath() {
   const { pathname } = useLocation()
@@ -10,7 +11,10 @@ export default function WindowRoutePath() {
   if (breadcrumbs.length === 0) return null
 
   return (
-    <div className="text-left w-full font-bold text-sm">
+    <GlassLayeredBox
+      width="fit-content"
+      className="px-4 py-2 mb-4 flex items-center justify-center gap-2"
+    >
       {breadcrumbs.map((breadcrumb, index) => {
         // i18n 키가 있으면 번역된 텍스트 사용, 없으면 기본 라벨 사용
         const displayText = breadcrumb.i18nKey
@@ -18,14 +22,19 @@ export default function WindowRoutePath() {
           : breadcrumb.label
 
         return (
-          <span key={index}>
-            {index > 0 && <span className="mx-2 text-gray-400">/</span>}
-            <span className={index === breadcrumbs.length - 1 ? 'text-gray-600' : 'text-gray-400'}>
+          <div key={index} className="text-sm flex items-center justify-center">
+            <div
+              className={
+                index === breadcrumbs.length - 1
+                  ? 'px-2 py-1 bg-white rounded-full'
+                  : 'text-white px-2 py-1'
+              }
+            >
               {displayText}
-            </span>
-          </span>
+            </div>
+          </div>
         )
       })}
-    </div>
+    </GlassLayeredBox>
   )
 }

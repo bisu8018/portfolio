@@ -28,14 +28,16 @@ export default function GlassLayeredBox({
       className={clsx(
         'relative flex items-center justify-center',
         'backdrop-blur-[3px]',
+        'overflow-hidden',
         width ? undefined : 'w-auto',
         height ? undefined : 'h-auto',
+        className,
       )}
-      style={{ ...sizeStyle, ...style }}
+      style={{ ...sizeStyle, borderRadius: radius, ...style }}
       {...props}
     >
       <div
-        className={clsx('absolute w-full h-full rounded-[inherit]')}
+        className={clsx('absolute w-full h-full')}
         style={{
           opacity: 0.01,
           backdropFilter: 'blur(50px)',
@@ -44,7 +46,7 @@ export default function GlassLayeredBox({
         }}
       />
       <div
-        className={clsx('absolute left-1/2 top-1/2 bg-white/70 rounded-[inherit]')}
+        className={clsx('absolute left-1/2 top-1/2 bg-white/70')}
         style={{
           width: '96%',
           height: '92%',
@@ -55,7 +57,7 @@ export default function GlassLayeredBox({
         }}
       />
       <div
-        className={clsx('absolute left-1/2 top-1/2 bg-white/70 rounded-[inherit]')}
+        className={clsx('absolute left-1/2 top-1/2 bg-white/70')}
         style={{
           width: '92%',
           height: '86%',
@@ -66,7 +68,7 @@ export default function GlassLayeredBox({
         }}
       />
       <div
-        className={clsx('absolute left-1/2 top-1/2 bg-white/70 rounded-[inherit]')}
+        className={clsx('absolute left-1/2 top-1/2 bg-white/70')}
         style={{
           width: '88%',
           height: '80%',
@@ -77,7 +79,7 @@ export default function GlassLayeredBox({
         }}
       />
       <div
-        className="absolute w-full h-full pointer-events-none rounded-[inherit]"
+        className="absolute w-full h-full pointer-events-none"
         style={{
           borderRadius: radius,
           boxShadow:
@@ -86,7 +88,7 @@ export default function GlassLayeredBox({
         }}
       />
       <div
-        className="absolute w-full h-full pointer-events-none rounded-[inherit]"
+        className="absolute w-full h-full pointer-events-none"
         style={{
           borderRadius: radius,
           boxShadow: 'inset 0 -2px 24px 0 rgba(31,38,135,0.13)',
@@ -97,9 +99,9 @@ export default function GlassLayeredBox({
       />
       <div
         className={clsx(
-          'relative w-full h-full flex items-center justify-center select-none rounded-[inherit] pointer-events-auto',
-          className,
+          'relative w-full h-full flex items-center justify-center select-none pointer-events-auto',
         )}
+        style={{ borderRadius: radius }}
       >
         {children}
       </div>

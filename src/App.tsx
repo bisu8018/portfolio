@@ -3,11 +3,11 @@ import { HashRouter as Router, Routes, Route, Navigate, useNavigate } from 'reac
 import { HelmetProvider } from 'react-helmet-async'
 import Layout from './features/layout/Layout'
 import HomePage from './pages/HomePage'
-import AboutPage from './pages/AboutPage'
 import CareerPage from './pages/CareerPage'
 import ContactPage from './pages/ContactPage'
 import { ROUTE_PATHS } from './constants/routePaths'
 import MetaTag from './features/commons/MetaTag'
+import SkillsPage from './pages/SkillsPage'
 
 function RouterWrapper() {
   const navigate = useNavigate()
@@ -30,8 +30,12 @@ function RouterWrapper() {
     <Routes>
       <Route path={ROUTE_PATHS.ROOT} element={<Layout />}>
         <Route index element={<Navigate to={ROUTE_PATHS.PORTFOLIO.MAIN_PAGE} replace />} />
+        <Route
+          path="/portfolio"
+          element={<Navigate to={ROUTE_PATHS.PORTFOLIO.MAIN_PAGE} replace />}
+        />
         <Route path={ROUTE_PATHS.PORTFOLIO.MAIN_PAGE} element={<HomePage />} />
-        <Route path={ROUTE_PATHS.PORTFOLIO.ABOUT} element={<AboutPage />} />
+        <Route path={ROUTE_PATHS.PORTFOLIO.SKILLS} element={<SkillsPage />} />
         <Route path={ROUTE_PATHS.PORTFOLIO.CAREER} element={<CareerPage />} />
         <Route path={ROUTE_PATHS.PORTFOLIO.CONTACT} element={<ContactPage />} />
       </Route>

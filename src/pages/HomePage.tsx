@@ -1,6 +1,5 @@
 import CContentsBox from '@/features/commons/CContentsBox'
 import Typewriter from '../features/commons/Typewriter'
-import BlackHole from '@/features/commons/BlackHole'
 import { useTranslation, Trans } from 'react-i18next'
 
 export default function HomePage() {
@@ -8,8 +7,8 @@ export default function HomePage() {
   const lines = t('home.hero.lines', { returnObjects: true }) as string[]
 
   return (
-    <CContentsBox className="h-[calc(100%-32px)] overflow-y-hidden">
-      <main id="main" className="flex flex-col h-full">
+    <CContentsBox className="overflow-y-hidden">
+      <main id="main" className="flex flex-col">
         <div className="font-bold text-xl text-left">
           <Typewriter texts={lines} />
         </div>
@@ -31,12 +30,6 @@ export default function HomePage() {
         <div className="mt-3 text-sm">{t('home.description.p3')}</div>
 
         <div className="mt-3 text-sm">{t('home.description.p4')}</div>
-
-        <div className="flex justify-center items-center flex-1 min-h-0 w-full">
-          <div className="w-full max-w-md aspect-square">
-            <BlackHole className="opacity-80" />
-          </div>
-        </div>
       </main>
     </CContentsBox>
   )

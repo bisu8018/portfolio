@@ -32,10 +32,10 @@ export const navigation: NavigationMap = {
     {
       items: [
         {
-          key: 'about',
-          icon: '👤',
-          path: ROUTE_PATHS.PORTFOLIO.ABOUT,
-          label: { id: 'lnb.about', default: '소개' },
+          key: 'skills',
+          icon: '🛠️',
+          path: ROUTE_PATHS.PORTFOLIO.SKILLS,
+          label: { id: 'lnb.skills', default: 'Skills' },
         },
         {
           key: 'career',

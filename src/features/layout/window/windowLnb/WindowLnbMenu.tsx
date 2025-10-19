@@ -69,12 +69,12 @@ function Item({
       className={clsx(
         'flex items-center px-4 relative cursor-pointer',
         radiusClass,
-        selected ? 'bg-white' : 'bg-white/50 hover:bg-white/70',
+        selected ? 'bg-white' : 'bg-white/50 hover:bg-white/80',
         className,
       )}
       {...props}
     >
-      <div className={clsx('py-2', !isLast && 'border-b border-gray-300 w-full')}>
+      <div className={clsx('py-2', !isLast && 'w-full')}>
         <span className="mr-4 text-md">{icon}</span>
         <span className="flex-1 text-sm font-medium">{children}</span>
         <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xl font-light pointer-events-none">

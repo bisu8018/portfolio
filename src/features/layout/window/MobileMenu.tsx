@@ -73,10 +73,10 @@ export default function MobileMenu() {
                 className="bg-transparent p-0 m-0 border-0 text-inherit text-left cursor-pointer"
                 onClick={() => {
                   setOpen(false)
-                  navigate(ROUTE_PATHS.PORTFOLIO.ABOUT)
+                  navigate(ROUTE_PATHS.PORTFOLIO.SKILLS)
                 }}
               >
-                {t('lnb.about', '소개')}
+                {t('lnb.skills', 'Skills')}
               </button>
               <button
                 className="bg-transparent p-0 m-0 border-0 text-inherit text-left cursor-pointer"
