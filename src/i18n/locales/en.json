@@ -123,6 +123,7 @@
         "location": "Seongnam, South Korea · On-site",
         "highlights": [
           "Game Launcher WebApp | Remote Play WebApp | Personalized Ad Web/SDK | Official Web (Portal, Customer Info, Game Web Launch SDK, etc.) | WebSocket Streaming SDK | Unified Payment SDK | Unified Auth SDK | Multiple Console Webs",
+          "Designed and developed an in-house console common UI component library to improve development productivity and consistency",
           "Modernized legacy systems using the latest frameworks, improving performance and maintainability",
           "Developed various SDK clients and solution management tools to enhance internal operational efficiency",
           "Enhanced user experience by implementing multi-language (i18n) features and responsive UI/UX for global users",
@@ -197,5 +198,29 @@
         ]
       }
     }
+  },
+  "contactPage": {
+    "email": {
+      "label": "Email",
+      "value": "dean.huiyongPark@gmail.com",
+      "action": "Send Email"
+    },
+    "github": {
+      "label": "GitHub",
+      "value": "github.com/bisu8018",
+      "action": "View Profile"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "value": "linkedin.com/in/huiyong-park",
+      "action": "Connect"
+    },
+    "blog": {
+      "label": "Tech Blog",
+      "value": "velog.io/@bisu8018",
+      "action": "Visit Blog"
+    },
+    "availability": "Currently open to freelance and full-time opportunities.",
+    "responseTime": "I typically respond within 24 hours."
   }
 }

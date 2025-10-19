@@ -21,8 +21,9 @@ if (typeof window !== 'undefined' && window.console) {
   )
   console.log('%cEmail: %c' + URLS.EMAIL, infoStyle, linkStyle)
   console.log('%cGitHub: %c' + URLS.GITHUB, infoStyle, linkStyle)
-  console.log('%cPortfolio: %c' + URLS.PORTFOLIO, infoStyle, linkStyle)
+  console.log('%cLinkedIn: %c' + URLS.LINKEDIN, infoStyle, linkStyle)
   console.log('%cBlog: %c' + URLS.BLOG, infoStyle, linkStyle)
+  console.log('%cPortfolio: %c' + URLS.PORTFOLIO, infoStyle, linkStyle)
   console.log(
     '%c\nIf you are reading this, feel free to contact me for collaboration, job offers, or just to say hi!\n',
     infoStyle,

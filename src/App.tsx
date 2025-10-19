@@ -8,6 +8,17 @@ import ContactPage from './pages/ContactPage'
 import { ROUTE_PATHS } from './constants/routePaths'
 import MetaTag from './features/commons/MetaTag'
 import SkillsPage from './pages/SkillsPage'
+import useFirstVisit from './hooks/useFirstVisit'
+
+function FirstVisitRedirect() {
+  const shouldRedirect = useFirstVisit()
+
+  if (shouldRedirect) {
+    return null
+  }
+
+  return <HomePage />
+}
 
 function RouterWrapper() {
   const navigate = useNavigate()
@@ -29,7 +40,7 @@ function RouterWrapper() {
   return (
     <Routes>
       <Route path={ROUTE_PATHS.ROOT} element={<Layout />}>
-        <Route index element={<Navigate to={ROUTE_PATHS.PORTFOLIO.MAIN_PAGE} replace />} />
+        <Route index element={<FirstVisitRedirect />} />
         <Route
           path="/portfolio"
           element={<Navigate to={ROUTE_PATHS.PORTFOLIO.MAIN_PAGE} replace />}
